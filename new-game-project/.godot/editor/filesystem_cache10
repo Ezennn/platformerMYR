@@ -1,7 +1,8 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1747471629
+::res://::1747478548
 icon.svg::CompressedTexture2D/CompressedTexture2D::5446011682443327583::1747377777::1747377797::1::::<><><>0<>0<>88eb14bbc473a96bb67c3141e46f8c70<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
-node_2d.tscn::PackedScene/PackedScene::5540980436915777275::1747470626::0::1::::<><><>0<>0<><>::uid://dg72j0g07eynl::::res://standingsprite.svg<>uid://dt62gw0dy8vsq::::res://walkingsprite.png
+node_2d.tscn::PackedScene::5540980436915777275::1747478218::0::1::::<><><>0<>0<><>::uid://gqius2vdrrrd::::res://Resource pack/standingsprite-Recovered.png<>uid://dh2a7afvy41fj::::res://player.gd<>uid://ifjm2uyfqa4b::::res://Resource pack/walkingsprite-Recovered.png
+player.gd::GDScript::7706379310021508579::1747478218::0::1::::<>Area2D<><>0<>0<><>::
 ::res://Resource pack/::1747471473
 standingsprite-Recovered.png::CompressedTexture2D/CompressedTexture2D::454685545802243489::1747471418::1747471473::1::::<><><>0<>0<>1376c6f36aa67bc274ae2118cb33146b<>res://.godot/imported/standingsprite-Recovered.png-09addf0911a70ac4c90468ce206a75e0.ctex::
 walkingsprite-Recovered.png::CompressedTexture2D/CompressedTexture2D::572401970460618795::1747471409::1747471473::1::::<><><>0<>0<>7ce4f07588ac6125929b5df9c2b102fc<>res://.godot/imported/walkingsprite-Recovered.png-bd633900ecc838a7f46d0cf550760668.ctex::

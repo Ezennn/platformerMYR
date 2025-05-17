@@ -1,11 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://ck7dex2yvdnxr"]
+[gd_scene load_steps=6 format=3 uid="uid://ck7dex2yvdnxr"]
 
 [ext_resource type="Texture2D" uid="uid://gqius2vdrrrd" path="res://Resource pack/standingsprite-Recovered.png" id="1_0e48y"]
+[ext_resource type="Script" uid="uid://dh2a7afvy41fj" path="res://player.gd" id="1_epypp"]
 [ext_resource type="Texture2D" uid="uid://ifjm2uyfqa4b" path="res://Resource pack/walkingsprite-Recovered.png" id="2_epypp"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0hol4"]
 animations = [{
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_epypp")
+}],
 "loop": true,
 "name": &"up",
 "speed": 5.0
@@ -13,9 +17,6 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("1_0e48y")
-}, {
-"duration": 1.0,
-"texture": ExtResource("2_epypp")
 }],
 "loop": true,
 "name": &"walking",
@@ -26,12 +27,13 @@ animations = [{
 radius = 7.0
 height = 20.0
 
-[node name="Area2D" type="Area2D"]
+[node name="Player" type="Area2D"]
+script = ExtResource("1_epypp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_0hol4")
 animation = &"walking"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2, 0)
 shape = SubResource("CapsuleShape2D_q6r6c")
