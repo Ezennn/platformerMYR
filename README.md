@@ -1,8 +1,14 @@
-# platformerMYR
-A game - A platformer (Tech stack - GoDot) - Next week 
-Closed task make a platformer template 
-Open task is to market it (Deploy it/ Test it)
-GitHub 
-Make a login feature? (Postgres) (Backend and a frontend if needed) -Python -Flutter if needed (Last)
-Stakeholders
+# Platformer Game
+
+## Features
+- A simple platformer game (closed task)
+- Deployed in Google Playstore with DockerFile
+- Login
+- Completed within next week
+
+
+## Tech stack
+- GoDot - FrontEnd
+- PostGres - Database
+- Django - BackEnd Supplementary
 
