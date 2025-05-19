@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://dye557cuhntoy"]
+
+[ext_resource type="Texture2D" uid="uid://busk4wfy7i7nl" path="res://assets/sprites/world_tileset.png" id="1_ld640"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ld640"]
+atlas = ExtResource("1_ld640")
+region = Rect2(112, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gatre"]
+atlas = ExtResource("1_ld640")
+region = Rect2(112, 91, 16, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_abj43"]
+atlas = ExtResource("1_ld640")
+region = Rect2(112, 80, 16, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x13ts"]
+atlas = ExtResource("1_ld640")
+region = Rect2(128, 80, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xnmcc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ld640")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gatre")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_abj43")
+}],
+"loop": true,
+"name": &"squished",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x13ts")
+}],
+"loop": true,
+"name": &"young background mushroom",
+"speed": 5.0
+}]
+
+[node name="Red (Jump) Mushroom" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_xnmcc")
+animation = &"squished"
