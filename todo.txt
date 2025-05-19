@@ -1,0 +1,7 @@
+dash
+double jump
+wall jump 
+death scene
+coin counter
+snap all coins to grid
+display total amount of coins

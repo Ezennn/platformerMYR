@@ -1,0 +1,119 @@
+[gd_scene load_steps=16 format=3 uid="uid://ljtvmhn8b01e"]
+
+[ext_resource type="Script" uid="uid://bolknreobe3we" path="res://scenes/green_slime.gd" id="1_0pvn7"]
+[ext_resource type="Texture2D" uid="uid://qb53c0x8oche" path="res://assets/sprites/slime_green.png" id="2_4q1e0"]
+[ext_resource type="PackedScene" uid="uid://d11i11xfv5sgw" path="res://scenes/killzone.tscn" id="3_boo2g"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kq38r"]
+atlas = ExtResource("2_4q1e0")
+region = Rect2(0, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_io87k"]
+atlas = ExtResource("2_4q1e0")
+region = Rect2(24, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4q1p6"]
+atlas = ExtResource("2_4q1e0")
+region = Rect2(48, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vl2pm"]
+atlas = ExtResource("2_4q1e0")
+region = Rect2(72, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5q800"]
+atlas = ExtResource("2_4q1e0")
+region = Rect2(0, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_35rgu"]
+atlas = ExtResource("2_4q1e0")
+region = Rect2(24, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t5vyh"]
+atlas = ExtResource("2_4q1e0")
+region = Rect2(48, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_452or"]
+atlas = ExtResource("2_4q1e0")
+region = Rect2(72, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ukqwe"]
+atlas = ExtResource("2_4q1e0")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5xgja"]
+atlas = ExtResource("2_4q1e0")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e30mu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kq38r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_io87k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4q1p6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vl2pm")
+}],
+"loop": true,
+"name": &"Aggressive Idle",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5q800")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_35rgu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t5vyh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_452or")
+}],
+"loop": true,
+"name": &"Angry",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ukqwe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5xgja")
+}],
+"loop": true,
+"name": &"Wake Up",
+"speed": 2.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mp6ra"]
+size = Vector2(10, 14)
+
+[node name="Green Slime" type="Node2D"]
+script = ExtResource("1_0pvn7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_e30mu")
+animation = &"Aggressive Idle"
+autoplay = "Aggressive Idle"
+frame_progress = 0.719737
+
+[node name="Killzone" parent="." instance=ExtResource("3_boo2g")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_mp6ra")
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+position = Vector2(0, 5)
+target_position = Vector2(8, 0)
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+position = Vector2(0, 5)
+target_position = Vector2(-8, 0)
