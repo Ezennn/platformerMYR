@@ -1,18 +1,11 @@
 [gd_scene load_steps=7 format=3 uid="uid://dye557cuhntoy"]
 
+[ext_resource type="Script" uid="uid://c28u45h1bc6v2" path="res://scripts/red_(jump)_mushroom.gd" id="1_gatre"]
 [ext_resource type="Texture2D" uid="uid://busk4wfy7i7nl" path="res://assets/sprites/world_tileset.png" id="1_ld640"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ld640"]
 atlas = ExtResource("1_ld640")
 region = Rect2(112, 80, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gatre"]
-atlas = ExtResource("1_ld640")
-region = Rect2(112, 91, 16, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_abj43"]
-atlas = ExtResource("1_ld640")
-region = Rect2(112, 80, 16, 11)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x13ts"]
 atlas = ExtResource("1_ld640")
@@ -30,17 +23,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gatre")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_abj43")
-}],
-"loop": true,
-"name": &"squished",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_x13ts")
 }],
 "loop": true,
@@ -48,8 +30,49 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Red (Jump) Mushroom" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_abj43"]
+size = Vector2(12, 16.5)
+
+[node name="Red (Jump) Mushroom" type="StaticBody2D"]
+visibility_layer = 2
+collision_mask = 2
+script = ExtResource("1_gatre")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
 sprite_frames = SubResource("SpriteFrames_xnmcc")
-animation = &"squished"
+
+[node name="SquishedMushroom" type="Sprite2D" parent="."]
+visible = false
+
+[node name="SquishedHead" type="Sprite2D" parent="SquishedMushroom"]
+position = Vector2(0, -3.75)
+scale = Vector2(1, 0.772727)
+texture = ExtResource("1_ld640")
+region_enabled = true
+region_rect = Rect2(112, 80, 16, 11)
+
+[node name="SquishedBase" type="Sprite2D" parent="SquishedMushroom"]
+position = Vector2(0, 3)
+scale = Vector2(1.16667, 1)
+texture = ExtResource("1_ld640")
+region_enabled = true
+region_rect = Rect2(114, 107, 12, 5)
+
+[node name="Mushroom" type="Sprite2D" parent="."]
+texture = ExtResource("1_ld640")
+region_enabled = true
+region_rect = Rect2(112, 80, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_abj43")
+one_way_collision = true
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -0.75)
+shape = SubResource("RectangleShape2D_abj43")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]

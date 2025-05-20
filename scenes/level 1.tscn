@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://bofabqvdodi8y"]
+[gd_scene load_steps=17 format=4 uid="uid://bofabqvdodi8y"]
 
 [ext_resource type="Texture2D" uid="uid://busk4wfy7i7nl" path="res://assets/sprites/world_tileset.png" id="1_1uqwn"]
 [ext_resource type="PackedScene" uid="uid://ljtvmhn8b01e" path="res://scenes/green_slime.tscn" id="2_2sj2h"]
@@ -7,7 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://c2hit07jbcp6w" path="res://scenes/platform.tscn" id="5_3pdoh"]
 [ext_resource type="PackedScene" uid="uid://d11i11xfv5sgw" path="res://scenes/killzone.tscn" id="6_hc45n"]
 [ext_resource type="FontFile" uid="uid://cbt5xvtsjjscv" path="res://assets/fonts/PixelOperator8.ttf" id="7_gthes"]
-[ext_resource type="Script" uid="uid://bse1jlaj2rxju" path="res://scenes/game_manager.gd" id="8_p75kv"]
+[ext_resource type="Script" uid="uid://bse1jlaj2rxju" path="res://scripts/game_manager.gd" id="8_p75kv"]
+[ext_resource type="PackedScene" uid="uid://dye557cuhntoy" path="res://scenes/red_(jump)_mushroom.tscn" id="9_2sj2h"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lnu2h"]
 texture = ExtResource("1_1uqwn")
@@ -239,7 +240,7 @@ tile_set = SubResource("TileSet_lbhrr")
 position = Vector2(360, 36)
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("3_dqu65")]
-position = Vector2(5, 32)
+position = Vector2(233, 80)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(0, -7)
@@ -293,13 +294,13 @@ autoplay = "move"
 
 [node name="Killzones" type="Node" parent="."]
 
-[node name="Killzone" parent="Killzones" instance=ExtResource("6_hc45n")]
+[node name="Killzone" parent="Killzones" groups=["KillZones"] instance=ExtResource("6_hc45n")]
 position = Vector2(5, 139)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzones/Killzone"]
 shape = SubResource("WorldBoundaryShape2D_p57ef")
 
-[node name="Killzone2" parent="Killzones" instance=ExtResource("6_hc45n")]
+[node name="Killzone2" parent="Killzones" groups=["KillZones"] instance=ExtResource("6_hc45n")]
 position = Vector2(216, 89)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzones/Killzone2"]
@@ -316,11 +317,11 @@ theme_override_fonts/font = ExtResource("7_gthes")
 theme_override_font_sizes/font_size = 8
 text = "Space to jump "
 
-[node name="GameManager" type="Node" parent="."]
+[node name="LabelManager" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("8_p75kv")
 
-[node name="ScoreLabel" type="Label" parent="GameManager"]
+[node name="ScoreLabel" type="Label" parent="LabelManager"]
 offset_left = 501.0
 offset_top = -111.0
 offset_right = 621.0
@@ -333,3 +334,6 @@ You have earned x coins "
 horizontal_alignment = 1
 autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
+
+[node name="Red (Jump) Mushroom" parent="." instance=ExtResource("9_2sj2h")]
+position = Vector2(249, 72)
