@@ -66,7 +66,7 @@ func _physics_process(delta: float) -> void:
 	if bounce_pending:
 		velocity.y = min(velocity.y, JUMP_VELOCITY * 1.5)
 		bounce_pending = false
-    
+	
 	var direction := Input.get_axis("move_left", "move_right")
 	if direction and isAlive:
 		velocity.x = direction * SPEED

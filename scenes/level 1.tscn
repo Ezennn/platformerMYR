@@ -33,7 +33,7 @@ texture = ExtResource("1_1uqwn")
 9:0/0 = 0
 9:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -5.75548, 8, -0.179857, -8, -2.1583)
 10:0/0 = 0
-10:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -5.03604, 8, -5.2159, 8, 0.359718, -8, 0.359718)
+10:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -5.78696, 8, -5.78696, 8, 0.179859, -8, 0)
 11:0/0 = 0
 11:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -5.75548, 8, -8, 8, -1.61873, -8, 0)
 0:1/0 = 0
@@ -57,7 +57,7 @@ texture = ExtResource("1_1uqwn")
 9:1/0 = 0
 9:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -5.75548, 8, -0.179857, -8, -2.1583)
 10:1/0 = 0
-10:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -5.03604, 8, -5.2159, 8, 0.359718, -8, 0.359718)
+10:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -5.78696, 8, -5.78696, 8, 0.179859, -8, 0)
 11:1/0 = 0
 11:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -5.75548, 8, -8, 8, -1.61873, -8, 0)
 0:2/0 = 0
@@ -81,7 +81,7 @@ texture = ExtResource("1_1uqwn")
 9:2/0 = 0
 9:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -5.75548, 8, -0.179857, -8, -2.1583)
 10:2/0 = 0
-10:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -5.03604, 8, -5.2159, 8, 0.359718, -8, 0.359718)
+10:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -5.78696, 8, -5.78696, 8, 0.179859, -8, 0)
 11:2/0 = 0
 11:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -5.75548, 8, -8, 8, -1.61873, -8, 0)
 0:3/0 = 0
@@ -240,7 +240,7 @@ tile_set = SubResource("TileSet_lbhrr")
 position = Vector2(360, 36)
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("3_dqu65")]
-position = Vector2(233, 80)
+position = Vector2(8, 24)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(0, -7)
@@ -317,21 +317,18 @@ theme_override_fonts/font = ExtResource("7_gthes")
 theme_override_font_sizes/font_size = 8
 text = "Space to jump "
 
-[node name="LabelManager" type="Node" parent="."]
+[node name="LabelManager" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
 script = ExtResource("8_p75kv")
 
 [node name="ScoreLabel" type="Label" parent="LabelManager"]
-offset_left = 501.0
-offset_top = -111.0
-offset_right = 621.0
-offset_bottom = -80.0
+anchors_preset = -1
+anchor_right = 0.0546875
+anchor_bottom = 0.0169753
 theme_override_colors/font_color = Color(0.027451, 0.105882, 1, 1)
 theme_override_fonts/font = ExtResource("7_gthes")
-theme_override_font_sizes/font_size = 8
-text = "Congrats!
-You have earned x coins "
-horizontal_alignment = 1
+theme_override_font_sizes/font_size = 32
+text = "Coins: 0"
 autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
 
