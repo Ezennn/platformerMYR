@@ -179,9 +179,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ujl30")
 }],
-"loop": true,
+"loop": false,
 "name": &"Dash",
-"speed": 12.0
+"speed": 21.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -307,9 +307,10 @@ script = ExtResource("1_g2els")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -4)
 sprite_frames = SubResource("SpriteFrames_2hs0m")
-animation = &"dead"
+animation = &"Dash"
 autoplay = "idle"
-frame_progress = 0.481789
+frame = 7
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_qhqgy")
