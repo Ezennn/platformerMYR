@@ -5,19 +5,32 @@ class_name Player
 const SPEED = 130.0
 const DASHSPEED = 200.0
 const JUMP_VELOCITY = -300.0
+
 const DASHTIME = 0.3
 
-var isAlive = true
+var isAlive : bool = true
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 var doublejump = true
 var airdash = true
 var is_dashing = false
 var dash_timer = 0.0
+var bounce_pending := false
 
-func setIsAlive(alive: bool) -> void:
-	self.isAlive = alive
+
+func _ready() -> void:
+	var killzones = get_tree().get_nodes_in_group("KillZones")
+
+	for zone in killzones:
+		zone.player_death.connect(_on_player_death)
+
+func bounce() -> void:
+	bounce_pending = true
+
+func _on_player_death() -> void:
+	isAlive = false
 	
 func _physics_process(delta: float) -> void:
+
 		
 	
 	if Input.is_action_just_pressed("Dash") and airdash == true:
@@ -49,10 +62,14 @@ func _physics_process(delta: float) -> void:
 			velocity.y = JUMP_VELOCITY
 			doublejump = false
 			
+	# Apply bounce if pending
+	if bounce_pending:
+		velocity.y = min(velocity.y, JUMP_VELOCITY * 1.5)
+		bounce_pending = false
+    
 	var direction := Input.get_axis("move_left", "move_right")
 	if direction and isAlive:
 		velocity.x = direction * SPEED
-		# flips Animated Sprite
 		animated_sprite.flip_h = direction < 0
 		animated_sprite.play("run")
 	else:
