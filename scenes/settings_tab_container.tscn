@@ -1,0 +1,200 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtgwrseav8ail"]
+
+[ext_resource type="FontFile" uid="uid://cbt5xvtsjjscv" path="res://assets/fonts/PixelOperator8.ttf" id="1_xpwon"]
+
+[node name="Settings_Tab_Container" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -451.5
+offset_top = -227.5
+offset_right = 451.5
+offset_bottom = 227.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/side_margin = 24
+theme_override_constants/icon_separation = 24
+theme_override_constants/icon_max_width = 24
+theme_override_fonts/font = ExtResource("1_xpwon")
+current_tab = 0
+
+[node name="Sound" type="TabBar" parent="TabContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_xpwon")
+theme_override_font_sizes/font_size = 15
+tab_alignment = 1
+metadata/_tab_index = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Sound"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -383.5
+offset_top = -166.0
+offset_right = 383.5
+offset_bottom = 166.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Sound/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="Label" type="Label" parent="TabContainer/Sound/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_xpwon")
+text = "Sound 1"
+
+[node name="Label2" type="Label" parent="TabContainer/Sound/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_xpwon")
+text = "Sound 2"
+
+[node name="Label3" type="Label" parent="TabContainer/Sound/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_xpwon")
+text = "Sound 3"
+
+[node name="Label4" type="Label" parent="TabContainer/Sound/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_xpwon")
+text = "Sound 4"
+justification_flags = 171
+
+[node name="Label5" type="Label" parent="TabContainer/Sound/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_xpwon")
+text = "Sound 5"
+justification_flags = 171
+
+[node name="Controls" type="TabBar" parent="TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_xpwon")
+theme_override_font_sizes/font_size = 15
+tab_alignment = 1
+metadata/_tab_index = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Controls"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -383.5
+offset_top = -166.0
+offset_right = 383.5
+offset_bottom = 166.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Controls/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="Label" type="Label" parent="TabContainer/Controls/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_xpwon")
+text = "Sound 1"
+
+[node name="Label2" type="Label" parent="TabContainer/Controls/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_xpwon")
+text = "Sound 2"
+
+[node name="Label3" type="Label" parent="TabContainer/Controls/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_xpwon")
+text = "Sound 3"
+
+[node name="Label4" type="Label" parent="TabContainer/Controls/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_xpwon")
+text = "Sound 4"
+justification_flags = 171
+
+[node name="Label5" type="Label" parent="TabContainer/Controls/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_xpwon")
+text = "Sound 5"
+justification_flags = 171
+
+[node name="Others" type="TabBar" parent="TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_xpwon")
+theme_override_font_sizes/font_size = 15
+tab_alignment = 1
+metadata/_tab_index = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Others"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -383.5
+offset_top = -166.0
+offset_right = 383.5
+offset_bottom = 166.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Others/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="Label" type="Label" parent="TabContainer/Others/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_xpwon")
+text = "Sound 1"
+
+[node name="Label2" type="Label" parent="TabContainer/Others/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_xpwon")
+text = "Sound 2"
+
+[node name="Label3" type="Label" parent="TabContainer/Others/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_xpwon")
+text = "Sound 3"
+
+[node name="Label4" type="Label" parent="TabContainer/Others/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_xpwon")
+text = "Sound 4"
+justification_flags = 171
+
+[node name="Label5" type="Label" parent="TabContainer/Others/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_xpwon")
+text = "Sound 5"
+justification_flags = 171
