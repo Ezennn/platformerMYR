@@ -13,7 +13,9 @@ func _process(_delta: float) -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
-	print(body)
+	
+	#debug 
+	#print(body)
 	if not body.has_method("bounce"):
 		return
 	# Get the top of the mushroom (this node)
@@ -25,7 +27,10 @@ func _on_body_entered(body: Node2D) -> void:
 
 	# Add a small leeway
 	var leeway = 1
-	print("Player bottom: " + str(player_bottom) + "\n" + "Mushroom Top : " + str(mushroom_top))
+	
+	# debug 
+	#print("Player bottom: " + str(player_bottom) + "\n" + "Mushroom Top : " + str(mushroom_top))
+	
 	# leeway used for physics engine
 	if player_bottom < (mushroom_top + leeway) and player_bottom > (mushroom_top - leeway):
 		body.bounce()
