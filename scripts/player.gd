@@ -5,7 +5,7 @@ class_name Player
 const SPEED = 130.0
 const DASHSPEED = 200.0
 const JUMP_VELOCITY = -300.0
-const DASHTIME = 0.2
+const DASHTIME = 0.3
 
 var isAlive = true
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
