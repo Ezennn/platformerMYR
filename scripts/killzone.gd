@@ -5,6 +5,7 @@ extends Area2D
 signal player_death
 
 func _on_body_entered(body: Node2D) -> void:
+	print(body)
 	if body is Player:
 		player_death.emit()
 		print("You died!") 
