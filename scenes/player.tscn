@@ -180,8 +180,8 @@ animations = [{
 "texture": SubResource("AtlasTexture_ujl30")
 }],
 "loop": false,
-"name": &"dash",
-"speed": 10.0
+"name": &"Dash",
+"speed": 21.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -196,7 +196,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_wqfne")
 }],
-"loop": false,
+"loop": true,
 "name": &"dead",
 "speed": 6.0
 }, {
@@ -213,7 +213,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_md1ol")
 }],
-"loop": false,
+"loop": true,
 "name": &"hit",
 "speed": 10.0
 }, {
@@ -238,7 +238,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_g2els")
 }],
-"loop": false,
+"loop": true,
 "name": &"jump",
 "speed": 5.0
 }, {
@@ -291,7 +291,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_fulsm")
 }],
-"loop": false,
+"loop": true,
 "name": &"run",
 "speed": 12.0
 }]
@@ -302,12 +302,13 @@ size = Vector2(7, 15)
 [node name="Player" type="CharacterBody2D"]
 z_index = 5
 collision_layer = 2
+collision_mask = 15
 script = ExtResource("1_g2els")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -4)
 sprite_frames = SubResource("SpriteFrames_2hs0m")
-animation = &"run"
+animation = &"jump"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -317,4 +318,3 @@ shape = SubResource("RectangleShape2D_qhqgy")
 stream = ExtResource("3_qhqgy")
 
 [connection signal="ready" from="." to="." method="_on_ready"]
-[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animation_finished"]

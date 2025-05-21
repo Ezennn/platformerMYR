@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://ljtvmhn8b01e"]
+[gd_scene load_steps=17 format=3 uid="uid://ljtvmhn8b01e"]
 
 [ext_resource type="Script" uid="uid://bolknreobe3we" path="res://scripts/green_slime.gd" id="1_0pvn7"]
 [ext_resource type="Texture2D" uid="uid://qb53c0x8oche" path="res://assets/sprites/slime_green.png" id="2_4q1e0"]
@@ -93,7 +93,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mp6ra"]
-size = Vector2(10, 14)
+size = Vector2(10, 9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0pvn7"]
+size = Vector2(8, 4.5)
 
 [node name="Green Slime" type="Node2D"]
 script = ExtResource("1_0pvn7")
@@ -102,12 +105,14 @@ script = ExtResource("1_0pvn7")
 sprite_frames = SubResource("SpriteFrames_e30mu")
 animation = &"Aggressive Idle"
 autoplay = "Aggressive Idle"
-frame_progress = 0.719737
+frame = 3
+frame_progress = 0.753883
 
 [node name="Killzone" parent="." instance=ExtResource("3_boo2g")]
+collision_layer = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
-position = Vector2(0, 5)
+[node name="Killbox" type="CollisionShape2D" parent="Killzone"]
+position = Vector2(0, 7.5)
 shape = SubResource("RectangleShape2D_mp6ra")
 
 [node name="RayCastRight" type="RayCast2D" parent="."]
@@ -117,3 +122,11 @@ target_position = Vector2(8, 0)
 [node name="RayCastLeft" type="RayCast2D" parent="."]
 position = Vector2(0, 5)
 target_position = Vector2(-8, 0)
+
+[node name="HeadHitbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="Hitbox" type="CollisionShape2D" parent="HeadHitbox"]
+position = Vector2(0, -0.25)
+shape = SubResource("RectangleShape2D_0pvn7")
