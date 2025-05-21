@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dbx8s8a3oa8hy"]
+[gd_scene load_steps=5 format=3 uid="uid://dbx8s8a3oa8hy"]
 
 [ext_resource type="Script" uid="uid://qf2wgijeqbxm" path="res://scenes/options_menu.gd" id="1_ijpji"]
 [ext_resource type="FontFile" uid="uid://cbt5xvtsjjscv" path="res://assets/fonts/PixelOperator8.ttf" id="1_liyum"]
+[ext_resource type="Texture2D" uid="uid://ku8ufnit3tym" path="res://assets/Screens/download.jpg" id="2_lfjc7"]
 [ext_resource type="PackedScene" uid="uid://dtgwrseav8ail" path="res://scenes/settings_tab_container.tscn" id="3_hm4m4"]
 
 [node name="Options_Menu" type="Control"]
@@ -12,6 +13,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ijpji")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 645.0
+texture = ExtResource("2_lfjc7")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 0

@@ -3,7 +3,6 @@ class_name Player
 
 const SPEED = 130.0
 const DASHSPEED = 200.0
-const DASHTIME = 0.3
 const JUMP_VELOCITY = -300.0
 const BOUNCE_VELOCITY = -450.0
 const MAX_FALL_SPEED_WHILE_ON_WALL= 20
@@ -63,6 +62,9 @@ func play_animation_with_priority(anim_name: String, duration: float = 0.0) -> v
 
 func bounce() -> void:
 	bounce_pending = true
+	
+func enemybounce():
+	velocity.y = JUMP_VELOCITY * 1.2
 
 func _on_player_death() -> void:
 	blocking_animation_playing = true

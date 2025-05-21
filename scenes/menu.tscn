@@ -1,9 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://b2wboy6uv8wjp"]
+[gd_scene load_steps=5 format=3 uid="uid://b2wboy6uv8wjp"]
 
 [ext_resource type="Script" uid="uid://pjjy6stj4pi1" path="res://scenes/menu.gd" id="1_yqeox"]
+[ext_resource type="Texture2D" uid="uid://ku8ufnit3tym" path="res://assets/Screens/download.jpg" id="2_con2f"]
 [ext_resource type="FontFile" uid="uid://cbt5xvtsjjscv" path="res://assets/fonts/PixelOperator8.ttf" id="2_vjb58"]
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_mhnvy"]
+
 [node name="Menu" type="Control"]
+material = SubResource("CanvasItemMaterial_mhnvy")
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,6 +15,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_yqeox")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("2_con2f")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -25,6 +35,7 @@ offset_right = 148.0
 offset_bottom = 84.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 20
 
 [node name="Start" type="Button" parent="VBoxContainer"]
 layout_mode = 2

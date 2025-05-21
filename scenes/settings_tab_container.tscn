@@ -27,9 +27,10 @@ theme_override_constants/side_margin = 24
 theme_override_constants/icon_separation = 24
 theme_override_constants/icon_max_width = 24
 theme_override_fonts/font = ExtResource("1_xpwon")
-current_tab = 0
+current_tab = 1
 
 [node name="Sound" type="TabBar" parent="TabContainer"]
+visible = false
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_xpwon")
 theme_override_font_sizes/font_size = 15
@@ -86,7 +87,6 @@ text = "Sound 5"
 justification_flags = 171
 
 [node name="Controls" type="TabBar" parent="TabContainer"]
-visible = false
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_xpwon")
 theme_override_font_sizes/font_size = 15
@@ -111,38 +111,59 @@ theme_override_constants/margin_top = 24
 theme_override_constants/margin_right = 24
 theme_override_constants/margin_bottom = 24
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Controls/MarginContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Controls/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Controls/MarginContainer/ScrollContainer"]
 layout_mode = 2
 theme_override_constants/separation = 50
 
-[node name="Label" type="Label" parent="TabContainer/Controls/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_xpwon")
 text = "Sound 1"
 
-[node name="Label2" type="Label" parent="TabContainer/Controls/MarginContainer/VBoxContainer"]
+[node name="Label2" type="Label" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_xpwon")
 text = "Sound 2"
 
-[node name="Label3" type="Label" parent="TabContainer/Controls/MarginContainer/VBoxContainer"]
+[node name="Label3" type="Label" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_xpwon")
 text = "Sound 3"
 
-[node name="Label4" type="Label" parent="TabContainer/Controls/MarginContainer/VBoxContainer"]
+[node name="Label4" type="Label" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_xpwon")
 text = "Sound 4"
 justification_flags = 171
 
-[node name="Label5" type="Label" parent="TabContainer/Controls/MarginContainer/VBoxContainer"]
+[node name="Label5" type="Label" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_xpwon")
 text = "Sound 5"
 justification_flags = 171
 
-[node name="Others" type="TabBar" parent="TabContainer"]
+[node name="Label6" type="Label" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_xpwon")
+text = "Sound 5"
+justification_flags = 171
+
+[node name="Label7" type="Label" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_xpwon")
+text = "Sound 5"
+justification_flags = 171
+
+[node name="Label8" type="Label" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_xpwon")
+text = "Sound 5"
+justification_flags = 171
+
+[node name="Accounts" type="TabBar" parent="TabContainer"]
 visible = false
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_xpwon")
@@ -150,7 +171,7 @@ theme_override_font_sizes/font_size = 15
 tab_alignment = 1
 metadata/_tab_index = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Others"]
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Accounts"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -168,32 +189,32 @@ theme_override_constants/margin_top = 24
 theme_override_constants/margin_right = 24
 theme_override_constants/margin_bottom = 24
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Others/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Accounts/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 50
 
-[node name="Label" type="Label" parent="TabContainer/Others/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="TabContainer/Accounts/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_xpwon")
 text = "Sound 1"
 
-[node name="Label2" type="Label" parent="TabContainer/Others/MarginContainer/VBoxContainer"]
+[node name="Label2" type="Label" parent="TabContainer/Accounts/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_xpwon")
 text = "Sound 2"
 
-[node name="Label3" type="Label" parent="TabContainer/Others/MarginContainer/VBoxContainer"]
+[node name="Label3" type="Label" parent="TabContainer/Accounts/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_xpwon")
 text = "Sound 3"
 
-[node name="Label4" type="Label" parent="TabContainer/Others/MarginContainer/VBoxContainer"]
+[node name="Label4" type="Label" parent="TabContainer/Accounts/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_xpwon")
 text = "Sound 4"
 justification_flags = 171
 
-[node name="Label5" type="Label" parent="TabContainer/Others/MarginContainer/VBoxContainer"]
+[node name="Label5" type="Label" parent="TabContainer/Accounts/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_xpwon")
 text = "Sound 5"
