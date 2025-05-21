@@ -34,3 +34,4 @@ func _on_body_entered(body: Node2D) -> void:
 	# leeway used for physics engine
 	if player_bottom < (mushroom_top + leeway) and player_bottom > (mushroom_top - leeway):
 		body.bounce()
+		$AudioStreamPlayer2D.play()
