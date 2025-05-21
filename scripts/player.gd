@@ -3,6 +3,7 @@ class_name Player
 
 const SPEED = 130.0
 const DASHSPEED = 200.0
+const DASHTIME = 0.3
 const JUMP_VELOCITY = -300.0
 const BOUNCE_VELOCITY = -450.0
 const MAX_FALL_SPEED_WHILE_ON_WALL= 20
@@ -40,9 +41,8 @@ func _ready() -> void:
 		zone.player_death.connect(_on_player_death)
 
 func update_wall_contact() -> void:
-	is_on_wall_left = $RayCastLeft.is_colliding()
-	is_on_wall_right = $RayCastRight.is_colliding()
-	# later maybe add code to check whether collide with tileMap 
+	is_on_wall_left = $RayCastLeft.get_collider() is TileMapLayer
+	is_on_wall_right = $RayCastRight.get_collider() is TileMapLayer
 
 func play_animation_with_priority(anim_name: String, duration: float = 0.0) -> void:
 	var priority = animation_priority.get(anim_name)
@@ -88,6 +88,7 @@ func play_animation_for_duration(anim_name: String, duration: float) -> void:
 func _on_animation_finished() -> void:
 	current_animation_priority = 0
 	blocking_animation_playing = false
+	print("blocking_animation disabled")
 	if is_on_floor() and velocity.x == 0:
 		play_animation_with_priority("idle")
 
@@ -104,7 +105,7 @@ func _physics_process(delta: float) -> void:
 	update_wall_contact()
 	if blocking_animation_playing:
 		return
-
+	
 	var current_time = Time.get_ticks_msec() / 1000
 	var double_tap_dash_key_pressed = false
 
