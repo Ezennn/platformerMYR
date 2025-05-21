@@ -1,0 +1,47 @@
+[gd_scene load_steps=3 format=3 uid="uid://uv5cdmohgonf"]
+
+[ext_resource type="Script" uid="uid://bse1jlaj2rxju" path="res://scripts/label_manager.gd" id="1_itnma"]
+[ext_resource type="FontFile" uid="uid://cbt5xvtsjjscv" path="res://assets/fonts/PixelOperator8.ttf" id="2_6nuav"]
+
+[node name="LabelManager" type="CanvasLayer"]
+script = ExtResource("1_itnma")
+
+[node name="ScoreLabel" type="Label" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.027451, 0.105882, 1, 1)
+theme_override_fonts/font = ExtResource("2_6nuav")
+theme_override_font_sizes/font_size = 32
+text = "Coins: 0"
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="DeadLabel" type="Label" parent="."]
+z_index = 6
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.785093, 0, 0.219485, 1)
+theme_override_fonts/font = ExtResource("2_6nuav")
+theme_override_font_sizes/font_size = 64
+text = "You have died"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = 4
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.588235, 0.588235, 0.588235, 0.901961)
+
+[connection signal="ready" from="." to="." method="_on_ready"]
