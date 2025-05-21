@@ -8,6 +8,7 @@ const JUMP_VELOCITY = -300.0
 const BOUNCE_VELOCITY = -450.0
 const MAX_FALL_SPEED_WHILE_ON_WALL= 20
 const WALLJUMP_HOR_SPEED = 150.0
+const FALL_THROUGH_TIMER = 0.2  # Duration to disable collision in seconds
 
 # Constants for double tap timing (assumed in GameConstants)
 const DOUBLE_TAP_MAX_DELAY = GameConstants.DOUBLE_TAP_MAX_DELAY
@@ -63,8 +64,10 @@ func play_animation_with_priority(anim_name: String, duration: float = 0.0) -> v
 func bounce() -> void:
 	bounce_pending = true
 	
-func enemybounce():
+func enemy_bounce():
 	velocity.y = JUMP_VELOCITY * 1.2
+	audio_player.stream = preload("res://assets/sounds/jump.mp3")
+	audio_player.play()
 
 func _on_player_death() -> void:
 	blocking_animation_playing = true
@@ -88,7 +91,6 @@ func play_animation_for_duration(anim_name: String, duration: float) -> void:
 func _on_animation_finished() -> void:
 	current_animation_priority = 0
 	blocking_animation_playing = false
-	print("blocking_animation disabled")
 	if is_on_floor() and velocity.x == 0:
 		play_animation_with_priority("idle")
 
@@ -130,7 +132,15 @@ func _physics_process(delta: float) -> void:
 		if try_jump():
 			audio_player.stream = preload("res://assets/sounds/jump.mp3")
 			audio_player.play()
-
+	
+	if Input.is_action_just_pressed("down"):
+		if is_on_floor():
+			set_collision_mask_value(3, false)
+			await get_tree().create_timer(FALL_THROUGH_TIMER).timeout
+			set_collision_mask_value(3, true)
+		else:
+			velocity.y = 150
+			
 	if bounce_pending:
 		velocity.y = min(velocity.y, BOUNCE_VELOCITY)
 		bounce_pending = false
