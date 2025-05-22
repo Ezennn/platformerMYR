@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://bofabqvdodi8y"]
+[gd_scene load_steps=18 format=4 uid="uid://bofabqvdodi8y"]
 
 [ext_resource type="Texture2D" uid="uid://busk4wfy7i7nl" path="res://assets/sprites/world_tileset.png" id="1_1uqwn"]
 [ext_resource type="PackedScene" uid="uid://ljtvmhn8b01e" path="res://scenes/green_slime.tscn" id="2_2sj2h"]
@@ -9,6 +9,7 @@
 [ext_resource type="FontFile" uid="uid://cbt5xvtsjjscv" path="res://assets/fonts/PixelOperator8.ttf" id="7_gthes"]
 [ext_resource type="PackedScene" uid="uid://uv5cdmohgonf" path="res://scenes/label_manager.tscn" id="8_2sj2h"]
 [ext_resource type="PackedScene" uid="uid://dye557cuhntoy" path="res://scenes/red_(jump)_mushroom.tscn" id="9_2sj2h"]
+[ext_resource type="PackedScene" uid="uid://cf52cbj4eam28" path="res://scenes/pause_menu.tscn" id="10_dqu65"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lnu2h"]
 texture = ExtResource("1_1uqwn")
@@ -323,3 +324,7 @@ position_smoothing_enabled = true
 
 [node name="Red (Jump) Mushroom" parent="." instance=ExtResource("9_2sj2h")]
 position = Vector2(249, 72)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Pause_Menu" parent="CanvasLayer" instance=ExtResource("10_dqu65")]
