@@ -45,7 +45,7 @@ func update_wall_contact() -> void:
 	is_on_wall_left = $RayCastLeft.get_collider() is TileMapLayer
 	is_on_wall_right = $RayCastRight.get_collider() is TileMapLayer
 
-func play_animation_with_priority(anim_name: String, duration: float = 0.0) -> void:
+func play_animation_with_priority(anim_name: String, duration: float = 0.0, sprite : AnimatedSprite2D = animated_sprite) -> void:
 	var priority = animation_priority.get(anim_name)
 	if priority < current_animation_priority:
 		# Current animation is higher priority, ignore
@@ -54,7 +54,7 @@ func play_animation_with_priority(anim_name: String, duration: float = 0.0) -> v
 	current_animation_priority = priority
 	
 	if duration > 0:
-		play_animation_for_duration(anim_name, duration)
+		play_animation_for_duration(anim_name, duration, sprite)
 	else:
 		if animated_sprite.sprite_frames.has_animation(anim_name):
 			animated_sprite.play(anim_name)
@@ -75,8 +75,8 @@ func _on_player_death() -> void:
 	audio_player.stream = preload("res://assets/sounds/hurt.wav")
 	audio_player.play()
 
-func play_animation_for_duration(anim_name: String, duration: float) -> void:
-	var frames = animated_sprite.sprite_frames
+func play_animation_for_duration(anim_name: String, duration: float, sprite : AnimatedSprite2D = animated_sprite) -> void:
+	var frames = sprite.sprite_frames
 	if not frames.has_animation(anim_name):
 		print("Animation not found:", anim_name)
 		return
@@ -86,7 +86,7 @@ func play_animation_for_duration(anim_name: String, duration: float) -> void:
 	var frame_count = frames.get_frame_count(anim_name)
 	var new_fps = frame_count / duration
 	frames.set_animation_speed(anim_name, new_fps)
-	animated_sprite.play(anim_name)
+	sprite.play(anim_name)
 
 func _on_animation_finished() -> void:
 	current_animation_priority = 0
@@ -108,7 +108,7 @@ func _physics_process(delta: float) -> void:
 	if blocking_animation_playing:
 		return
 	
-	var current_time = Time.get_ticks_msec() / 1000
+	var current_time = Time.get_ticks_msec() / 1000.0
 	var double_tap_dash_key_pressed = false
 
 	if Input.is_action_just_pressed("move_left"):

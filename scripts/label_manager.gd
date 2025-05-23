@@ -19,3 +19,4 @@ func _on_ready() -> void:
 func _on_player_death() -> void:
 	$DeadLabel.visible = true
 	$ColorRect.visible = true
+	$ColorRect/TextureRect/AnimatedSprite2D.play("dead")
