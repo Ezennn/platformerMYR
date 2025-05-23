@@ -7,13 +7,11 @@ var direction = 1
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var head_hitbox: Area2D = $HeadHitbox
 
-func _ready():
-	head_hitbox.body_entered.connect(_on_head_hit)
-
 func _on_killzone_body_entered(body: Node2D) -> void:
-	remove_child($HeadHitbox)
+	$HeadHitbox.disconnect("body_entered", Callable(self, "_on_head_hit"))
 	
 func _on_head_hit(body):
+	$Killzone.disconnect("body_entered", Callable(self, "_on_killzone_body_entered"))
 	remove_child($Killzone)
 	if body.has_method("enemy_bounce"):
 		body.enemy_bounce()
