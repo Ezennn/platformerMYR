@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://bofabqvdodi8y"]
+[gd_scene load_steps=20 format=4 uid="uid://bofabqvdodi8y"]
 
 [ext_resource type="Texture2D" uid="uid://busk4wfy7i7nl" path="res://assets/sprites/world_tileset.png" id="1_1uqwn"]
 [ext_resource type="PackedScene" uid="uid://ljtvmhn8b01e" path="res://scenes/green_slime.tscn" id="2_2sj2h"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://uv5cdmohgonf" path="res://scenes/label_manager.tscn" id="8_2sj2h"]
 [ext_resource type="PackedScene" uid="uid://dye557cuhntoy" path="res://scenes/red_(jump)_mushroom.tscn" id="9_2sj2h"]
 [ext_resource type="PackedScene" uid="uid://cf52cbj4eam28" path="res://scenes/pause_menu.tscn" id="10_dqu65"]
+[ext_resource type="Texture2D" uid="uid://0urp6fdlsafk" path="res://assets/Screens/imageedit_2_4695843659.png" id="11_bsmkr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lnu2h"]
 texture = ExtResource("1_1uqwn")
@@ -222,6 +223,8 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iywne"]
 size = Vector2(16, 13)
 
+[sub_resource type="GDScript" id="GDScript_3pdoh"]
+
 [node name="Level 1" type="Node2D"]
 
 [node name="TileMap" type="TileMapLayer" parent="."]
@@ -328,3 +331,16 @@ position = Vector2(249, 72)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Pause_Menu" parent="CanvasLayer" instance=ExtResource("10_dqu65")]
+
+[node name="PauseButton" type="Button" parent="CanvasLayer"]
+process_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -71.0
+offset_bottom = 71.0
+grow_horizontal = 0
+theme_override_icons/icon = ExtResource("11_bsmkr")
+script = SubResource("GDScript_3pdoh")
+
+[connection signal="pressed" from="CanvasLayer/PauseButton" to="CanvasLayer/Pause_Menu" method="_on_pause_button_pressed"]

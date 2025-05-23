@@ -31,10 +31,21 @@ func _on_resume_pressed() -> void:
 	
 
 func _on_restart_pressed() -> void:
+	get_tree().paused = false
+	Engine.time_scale = 1
 	resume()
 	get_tree().reload_current_scene()
 
 
 func _on_main_menu_pressed() -> void:
+	get_tree().paused = false
+	Engine.time_scale = 1
 	get_tree().change_scene_to_file("res://scenes/menu.tscn")
 	
+
+
+func _on_pause_button_pressed() -> void:
+	if visible :
+		resume()
+	else :
+		pause()
