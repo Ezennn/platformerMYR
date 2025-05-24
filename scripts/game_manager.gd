@@ -52,11 +52,13 @@ func play_animation_for_duration(anim_name: String, duration: float, sprite : An
 	sprite.play(anim_name)
 
 func _on_ready() -> void:
+	self.visible = true
 	refresh_labels(GS.LEVEL)
-	for zone in get_tree().get_nodes_in_group("KillZones"):
-		zone.player_death.connect(_on_player_death)
+	# no longer required as killzones directly communicate with players and game manager 
+	#for zone in get_tree().get_nodes_in_group("KillZones"):
+		#zone.player_death.connect(_on_player_death)
 
-func _on_player_death() -> void:
+func on_player_death() -> void:
 	refresh_labels(GS.LOSE)
 	play_animation_for_duration("dead", DEATH_TIME)
 

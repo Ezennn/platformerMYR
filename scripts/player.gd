@@ -38,8 +38,10 @@ var animation_priority = {
 @onready var audio_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 func _ready() -> void:
-	for zone in get_tree().get_nodes_in_group("KillZones"):
-		zone.player_death.connect(_on_player_death)
+	pass
+	# the below code is no longer required, since killzones communicate directly to players
+	#for zone in get_tree().get_nodes_in_group("KillZones"):
+		#zone.player_death.connect(on_player_death)
 
 func update_wall_contact() -> void:
 	is_on_wall_left = $RayCastLeft.get_collider() is TileMapLayer
@@ -69,7 +71,7 @@ func enemy_bounce():
 	audio_player.stream = preload("res://assets/sounds/jump.mp3")
 	audio_player.play()
 
-func _on_player_death() -> void:
+func on_player_death() -> void:
 	blocking_animation_playing = true
 	play_animation_for_duration("dead", DEATH_TIME)
 	audio_player.stream = preload("res://assets/sounds/hurt.wav")

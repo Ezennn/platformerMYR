@@ -12,5 +12,4 @@ one_shot = true
 ignore_time_scale = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="player_death" from="." to="." method="_on_player_death"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
