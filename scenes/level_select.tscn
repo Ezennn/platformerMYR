@@ -1,0 +1,110 @@
+[gd_scene load_steps=8 format=3 uid="uid://cun3lygolenju"]
+
+[ext_resource type="Texture2D" uid="uid://cos7ah2l5cyxe" path="res://assets/screens/background_pixelart.jpg" id="1_2epne"]
+[ext_resource type="Script" uid="uid://ducl7fs0l0df" path="res://scripts/level_select.gd" id="1_r77uv"]
+[ext_resource type="FontFile" uid="uid://cbt5xvtsjjscv" path="res://assets/fonts/PixelOperator8.ttf" id="3_chg43"]
+[ext_resource type="PackedScene" uid="uid://bnpcvdejvocva" path="res://scenes/quit_button.tscn" id="4_r77uv"]
+[ext_resource type="PackedScene" uid="uid://clr6kwflr7th0" path="res://scenes/options_button.tscn" id="5_4nqmc"]
+[ext_resource type="PackedScene" uid="uid://ca3toq7ppqgoh" path="res://scenes/level_choice_button.tscn" id="6_r77uv"]
+
+[sub_resource type="Theme" id="Theme_r77uv"]
+default_font = ExtResource("3_chg43")
+default_font_size = 400
+
+[node name="Level Select" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+theme = SubResource("Theme_r77uv")
+script = ExtResource("1_r77uv")
+
+[node name="Background" type="TextureRect" parent="."]
+z_index = -5
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+offset_right = 1154.0
+offset_bottom = 651.0
+texture = ExtResource("1_2epne")
+expand_mode = 1
+
+[node name="LevelSelectLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 345.0
+offset_top = 40.0
+offset_right = 820.0
+offset_bottom = 91.0
+theme_override_fonts/font = ExtResource("3_chg43")
+theme_override_font_sizes/font_size = 50
+text = "Level Select"
+
+[node name="QuitButton" parent="." instance=ExtResource("4_r77uv")]
+layout_mode = 0
+offset_left = 1060.0
+offset_top = 2.0
+offset_right = 1750.0
+offset_bottom = 752.0
+
+[node name="OptionsButton" parent="." instance=ExtResource("5_4nqmc")]
+layout_mode = 0
+offset_left = 958.0
+offset_top = 3.0
+offset_right = 5358.0
+offset_bottom = 4443.0
+
+[node name="Level1" parent="." instance=ExtResource("6_r77uv")]
+layout_mode = 0
+offset_left = 96.0
+offset_top = 135.0
+offset_right = 1526.0
+offset_bottom = 1384.0
+
+[node name="Level2" parent="." instance=ExtResource("6_r77uv")]
+layout_mode = 0
+offset_left = 478.0
+offset_top = 132.0
+offset_right = 1908.0
+offset_bottom = 1381.0
+
+[node name="Label" parent="Level2" index="0"]
+text = "Level 2"
+
+[node name="Level3" parent="." instance=ExtResource("6_r77uv")]
+layout_mode = 0
+offset_left = 854.0
+offset_top = 137.0
+offset_right = 2284.0
+offset_bottom = 1386.0
+
+[node name="Label" parent="Level3" index="0"]
+text = "Level 3"
+
+[node name="Level4" parent="." instance=ExtResource("6_r77uv")]
+layout_mode = 0
+offset_left = 275.0
+offset_top = 390.0
+offset_right = 1705.0
+offset_bottom = 1639.0
+
+[node name="Label" parent="Level4" index="0"]
+text = "Level 4"
+
+[node name="Level5" parent="." instance=ExtResource("6_r77uv")]
+layout_mode = 0
+offset_left = 693.0
+offset_top = 393.0
+offset_right = 2123.0
+offset_bottom = 1642.0
+
+[node name="Label" parent="Level5" index="0"]
+text = "Level 5"
+
+[connection signal="pressed" from="Level1" to="." method="_on_level_1_pressed"]
+[connection signal="pressed" from="Level2" to="." method="_on_level_2_pressed"]
+[connection signal="pressed" from="Level3" to="." method="_on_level_3_pressed"]
+[connection signal="pressed" from="Level4" to="." method="_on_level_4_pressed"]
+[connection signal="pressed" from="Level5" to="." method="_on_level_5_pressed"]
+
+[editable path="Level1"]
+[editable path="Level2"]
+[editable path="Level3"]
+[editable path="Level4"]
+[editable path="Level5"]

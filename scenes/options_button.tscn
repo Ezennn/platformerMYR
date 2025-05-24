@@ -1,0 +1,50 @@
+[gd_scene load_steps=9 format=3 uid="uid://clr6kwflr7th0"]
+
+[ext_resource type="Texture2D" uid="uid://brv0u2hwgcag5" path="res://assets/sprites/settings icon.png" id="1_65gnq"]
+[ext_resource type="FontFile" uid="uid://cbt5xvtsjjscv" path="res://assets/fonts/PixelOperator8.ttf" id="2_6qh3v"]
+[ext_resource type="Script" uid="uid://d3tdm6o8ap11r" path="res://scripts/options_button.gd" id="2_hftl5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n1411"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vxici"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_thf6c"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f86jd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_317l6"]
+
+[node name="OptionsButton" type="Button"]
+offset_right = 4240.0
+offset_bottom = 4454.0
+scale = Vector2(0.019, 0.019)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_n1411")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_vxici")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_thf6c")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_f86jd")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_317l6")
+icon_alignment = 1
+vertical_icon_alignment = 0
+script = ExtResource("2_hftl5")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 339.0
+offset_top = 3526.0
+offset_right = 431.0
+offset_bottom = 3543.0
+scale = Vector2(40, 40)
+theme_override_fonts/font = ExtResource("2_6qh3v")
+theme_override_font_sizes/font_size = 16
+text = "Options"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 529.0
+offset_top = 200.0
+offset_right = 3661.0
+offset_bottom = 3332.0
+texture = ExtResource("1_65gnq")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

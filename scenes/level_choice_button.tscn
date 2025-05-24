@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://ca3toq7ppqgoh"]
+
+[ext_resource type="Texture2D" uid="uid://bqdjl1w15wkjl" path="res://assets/sprites/level 1 placeholder.png" id="1_prdgq"]
+
+[sub_resource type="Theme" id="Theme_4nqmc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l4ih1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m4qq5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_prdgq"]
+
+[node name="Level1" type="Button"]
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 1294.0
+offset_bottom = 1184.0
+scale = Vector2(0.2, 0.2)
+theme = SubResource("Theme_4nqmc")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_l4ih1")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_m4qq5")
+icon_alignment = 1
+vertical_icon_alignment = 0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 125.0
+offset_top = 845.0
+offset_right = 1200.0
+offset_bottom = 1118.0
+theme_override_font_sizes/font_size = 180
+theme_override_styles/normal = SubResource("StyleBoxFlat_prdgq")
+text = "Level 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 125.0
+offset_top = 55.0
+offset_right = 1200.0
+offset_bottom = 850.0
+texture = ExtResource("1_prdgq")
+expand_mode = 1

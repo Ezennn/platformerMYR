@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dtgwrseav8ail"]
 
 [ext_resource type="FontFile" uid="uid://cbt5xvtsjjscv" path="res://assets/fonts/PixelOperator8.ttf" id="1_xpwon"]
-[ext_resource type="PackedScene" uid="uid://d1wve1jmyxe6g" path="res://scripts/hot_key_bind.tscn" id="2_vajfs"]
+[ext_resource type="PackedScene" uid="uid://d1wve1jmyxe6g" path="res://scenes/hot_key_bind.tscn" id="2_vajfs"]
 
 [node name="Settings_Tab_Container" type="Control"]
 layout_mode = 3
