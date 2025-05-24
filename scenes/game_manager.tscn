@@ -1,8 +1,13 @@
-[gd_scene load_steps=42 format=3 uid="uid://uv5cdmohgonf"]
+[gd_scene load_steps=47 format=3 uid="uid://uv5cdmohgonf"]
 
-[ext_resource type="Script" uid="uid://bse1jlaj2rxju" path="res://scripts/label_manager.gd" id="1_itnma"]
+[ext_resource type="Script" uid="uid://bse1jlaj2rxju" path="res://scripts/game_manager.gd" id="1_itnma"]
 [ext_resource type="FontFile" uid="uid://cbt5xvtsjjscv" path="res://assets/fonts/PixelOperator8.ttf" id="2_6nuav"]
 [ext_resource type="Texture2D" uid="uid://g20jxsui8jgl" path="res://assets/sprites/knight.png" id="3_6nuav"]
+[ext_resource type="Texture2D" uid="uid://dys1bcilre0k8" path="res://assets/sprites/crown.png" id="4_oo155"]
+[ext_resource type="PackedScene" uid="uid://clr6kwflr7th0" path="res://scenes/options_button.tscn" id="5_ternb"]
+[ext_resource type="PackedScene" uid="uid://bnpcvdejvocva" path="res://scenes/quit_button.tscn" id="6_q8mjp"]
+[ext_resource type="PackedScene" uid="uid://5dm8m5rvtcnp" path="res://scenes/level_select_button.tscn" id="7_q8mjp"]
+[ext_resource type="AudioStream" uid="uid://8cw2fafkka61" path="res://assets/sounds/win.mp3" id="8_jdad8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4r5pv"]
 atlas = ExtResource("3_6nuav")
@@ -196,7 +201,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_wqfne")
 }],
-"loop": true,
+"loop": false,
 "name": &"dead",
 "speed": 6.0
 }, {
@@ -296,10 +301,10 @@ animations = [{
 "speed": 12.0
 }]
 
-[node name="LabelManager" type="CanvasLayer"]
+[node name="GameManager" type="CanvasLayer"]
 script = ExtResource("1_itnma")
 
-[node name="ScoreLabel" type="Label" parent="."]
+[node name="ScoreLabel" type="Label" parent="." groups=["LevelGroup"]]
 z_index = -2
 anchors_preset = 15
 anchor_right = 1.0
@@ -312,7 +317,7 @@ theme_override_font_sizes/font_size = 32
 text = "Coins: 0"
 autowrap_mode = 2
 
-[node name="DeadLabel" type="Label" parent="."]
+[node name="DeadLabel" type="Label" parent="." groups=["DeadGroup"]]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -326,7 +331,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." groups=["DeadGroup", "WinGroup"]]
 z_index = -1
 anchors_preset = 15
 anchor_right = 1.0
@@ -349,7 +354,54 @@ stretch_mode = 5
 position = Vector2(557, 483)
 scale = Vector2(7.73437, 7.73437)
 sprite_frames = SubResource("SpriteFrames_6nuav")
-animation = &"dead"
-autoplay = "dead"
+animation = &"idle"
+
+[node name="WinLabel" type="Label" parent="." groups=["WinGroup"]]
+z_index = -1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -377.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.194612, 0.45595, 0.204326, 1)
+theme_override_fonts/font = ExtResource("2_6nuav")
+theme_override_font_sizes/font_size = 64
+text = "Level x Won!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="CrownSprite" type="Sprite2D" parent="." groups=["WinGroup"]]
+z_index = 1
+position = Vector2(717, 306)
+scale = Vector2(0.24788, 0.231818)
+texture = ExtResource("4_oo155")
+
+[node name="OptionsButton" parent="." groups=["WinGroup"] instance=ExtResource("5_ternb")]
+offset_left = 486.0
+offset_top = 398.0
+offset_right = 4886.0
+offset_bottom = 4878.0
+scale = Vector2(0.05, 0.05)
+
+[node name="QuitButton" parent="." groups=["WinGroup"] instance=ExtResource("6_q8mjp")]
+offset_left = 813.0
+offset_top = 407.0
+offset_right = 1493.0
+offset_bottom = 1117.0
+scale = Vector2(0.3, 0.3)
+
+[node name="LevelSelectButton" parent="." groups=["WinGroup"] instance=ExtResource("7_q8mjp")]
+offset_left = 160.0
+offset_top = 385.0
+offset_right = 1056.0
+offset_bottom = 1312.0
+scale = Vector2(0.26, 0.26)
+
+[node name="VictorySound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_jdad8")
+volume_db = -8.0
+bus = &"SFX"
 
 [connection signal="ready" from="." to="." method="_on_ready"]

@@ -5,10 +5,8 @@ extends Area2D
 signal player_death
 
 func _on_body_entered(body: Node2D) -> void:
-	print(body)
 	if body is Player:
 		player_death.emit()
-		print("You died!") 
 		Engine.time_scale = GameConstants.DEATH_ENGINE_SLOWDOWN
 		timer.wait_time = GameConstants.DEATH_TIME
 		timer.start()
