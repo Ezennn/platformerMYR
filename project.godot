@@ -23,6 +23,8 @@ GameConstants="*res://scripts/game_constants.gd"
 [global_group]
 
 KillZones=""
+GameManager=""
+Player=""
 
 [input]
 

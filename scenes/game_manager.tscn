@@ -301,7 +301,7 @@ animations = [{
 "speed": 12.0
 }]
 
-[node name="GameManager" type="CanvasLayer"]
+[node name="GameManager" type="CanvasLayer" groups=["GameManager"]]
 script = ExtResource("1_itnma")
 
 [node name="ScoreLabel" type="Label" parent="." groups=["LevelGroup"]]
