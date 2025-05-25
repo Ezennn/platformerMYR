@@ -2,7 +2,7 @@
 
 ## Features
 - A simple platformer game (closed task)
-- Deployed in Google Playstore with DockerFile
+- Deployed in straight .exe into itch.io
 - Login
 - Completed within next week
 
