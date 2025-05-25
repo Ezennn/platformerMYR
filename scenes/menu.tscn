@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://b2wboy6uv8wjp"]
 
 [ext_resource type="Script" uid="uid://pjjy6stj4pi1" path="res://scripts/menu.gd" id="1_yqeox"]
-[ext_resource type="Texture2D" uid="uid://cos7ah2l5cyxe" path="res://assets/screens/background_pixelart.jpg" id="2_con2f"]
+[ext_resource type="Texture2D" uid="uid://cos7ah2l5cyxe" path="res://assets/Screens/background_pixelart.jpg" id="2_con2f"]
 [ext_resource type="FontFile" uid="uid://cbt5xvtsjjscv" path="res://assets/fonts/PixelOperator8.ttf" id="2_vjb58"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_mhnvy"]
@@ -22,7 +22,7 @@ offset_top = -119.0
 offset_right = 1152.0
 offset_bottom = 649.0
 texture = ExtResource("2_con2f")
-expand_mode = 1
+expand_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -59,6 +59,9 @@ size_flags_vertical = 8
 theme_override_fonts/font = ExtResource("2_vjb58")
 theme_override_font_sizes/font_size = 32
 text = "Quit"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(579, 319)
 
 [connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="VBoxContainer/Options" to="." method="_on_options_pressed"]

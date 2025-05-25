@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=3 uid="uid://2oy3ij8l7nqv"]
+
+[ext_resource type="FontFile" uid="uid://cbt5xvtsjjscv" path="res://assets/fonts/PixelOperator8.ttf" id="1_pebty"]
+[ext_resource type="Script" uid="uid://bn5jndvilqojp" path="res://scenes/option_button.gd" id="2_rwryf"]
+
+[node name="ScreenOptions" type="Control"]
+custom_minimum_size = Vector2(264, 0)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 50
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_pebty")
+theme_override_font_sizes/font_size = 20
+text = "Screen Resolution"
+horizontal_alignment = 1
+
+[node name="OptionButton" type="OptionButton" parent="HBoxContainer"]
+custom_minimum_size = Vector2(286, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_pebty")
+theme_override_font_sizes/font_size = 20
+script = ExtResource("2_rwryf")

@@ -13,12 +13,16 @@ config_version=5
 config/name="First Godot Platformer"
 run/main_scene="uid://bofabqvdodi8y"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://djyry0x7rat7s"
 
 [autoload]
 
 Music="*res://scenes/music.tscn"
 GameConstants="*res://scripts/game_constants.gd"
+
+[display]
+
+window/size/mode=3
 
 [global_group]
 
