@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://qf2wgijeqbxm" path="res://scripts/options_menu.gd" id="1_ijpji"]
 [ext_resource type="FontFile" uid="uid://cbt5xvtsjjscv" path="res://assets/fonts/PixelOperator8.ttf" id="1_liyum"]
-[ext_resource type="Texture2D" uid="uid://ku8ufnit3tym" path="res://assets/screens/download.jpg" id="2_lfjc7"]
+[ext_resource type="Texture2D" uid="uid://ku8ufnit3tym" path="res://assets/Screens/download.jpg" id="2_lfjc7"]
 [ext_resource type="PackedScene" uid="uid://dtgwrseav8ail" path="res://scenes/settings_tab_container.tscn" id="3_hm4m4"]
 
 [node name="Options_Menu" type="Control"]
@@ -52,5 +52,8 @@ size_flags_vertical = 8
 theme_override_fonts/font = ExtResource("1_liyum")
 theme_override_font_sizes/font_size = 30
 text = "Exit"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(577, 328)
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://dtgwrseav8ail"]
+[gd_scene load_steps=5 format=3 uid="uid://dtgwrseav8ail"]
 
 [ext_resource type="FontFile" uid="uid://cbt5xvtsjjscv" path="res://assets/fonts/PixelOperator8.ttf" id="1_xpwon"]
+[ext_resource type="PackedScene" uid="uid://cn031gnsyngh1" path="res://scenes/window_mode.tscn" id="2_j6vtx"]
 [ext_resource type="PackedScene" uid="uid://d1wve1jmyxe6g" path="res://scenes/hot_key_bind.tscn" id="2_vajfs"]
+[ext_resource type="PackedScene" uid="uid://2oy3ij8l7nqv" path="res://scenes/screen_options.tscn" id="3_a567c"]
 
 [node name="Settings_Tab_Container" type="Control"]
 layout_mode = 3
@@ -44,10 +46,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -383.5
-offset_top = -166.0
-offset_right = 383.5
-offset_bottom = 166.0
+offset_left = -383.0
+offset_top = -200.0
+offset_right = 384.0
+offset_bottom = 132.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 24
@@ -55,27 +57,24 @@ theme_override_constants/margin_top = 24
 theme_override_constants/margin_right = 24
 theme_override_constants/margin_bottom = 24
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Accessibility/MarginContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Accessibility/MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 50
 
-[node name="Label" type="Label" parent="TabContainer/Accessibility/MarginContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Accessibility/MarginContainer/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/separation = 75
+
+[node name="Label" type="Label" parent="TabContainer/Accessibility/MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_xpwon")
 theme_override_font_sizes/font_size = 20
 text = "Please control sound using your device"
 
-[node name="Label2" type="Label" parent="TabContainer/Accessibility/MarginContainer/VBoxContainer"]
+[node name="WindowMode" parent="TabContainer/Accessibility/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_j6vtx")]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_xpwon")
-theme_override_font_sizes/font_size = 20
-text = "Screen Size 1"
 
-[node name="Label3" type="Label" parent="TabContainer/Accessibility/MarginContainer/VBoxContainer"]
+[node name="ScreenOptions" parent="TabContainer/Accessibility/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("3_a567c")]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_xpwon")
-theme_override_font_sizes/font_size = 20
-text = "Sreen size 2"
 
 [node name="Controls" type="TabBar" parent="TabContainer"]
 visible = false
