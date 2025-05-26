@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://cun3lygolenju"]
 
-[ext_resource type="Texture2D" uid="uid://cos7ah2l5cyxe" path="res://assets/Screens/background_pixelart.jpg" id="1_2epne"]
+[ext_resource type="Texture2D" uid="uid://cos7ah2l5cyxe" path="res://assets/screens/background_pixelart.jpg" id="1_2epne"]
 [ext_resource type="Script" uid="uid://ducl7fs0l0df" path="res://scripts/level_select.gd" id="1_r77uv"]
 [ext_resource type="FontFile" uid="uid://cbt5xvtsjjscv" path="res://assets/fonts/PixelOperator8.ttf" id="3_chg43"]
 [ext_resource type="PackedScene" uid="uid://bnpcvdejvocva" path="res://scenes/quit_button.tscn" id="4_r77uv"]
@@ -96,9 +96,6 @@ offset_bottom = 1642.0
 
 [node name="Label" parent="Level5" index="0"]
 text = "Level 5"
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(581, 332)
 
 [connection signal="pressed" from="Level1" to="." method="_on_level_1_pressed"]
 [connection signal="pressed" from="Level2" to="." method="_on_level_2_pressed"]
