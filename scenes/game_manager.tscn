@@ -342,17 +342,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.588235, 0.588235, 0.588235, 0.901961)
 
-[node name="TextureRect" type="TextureRect" parent="ColorRect"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-expand_mode = 3
-stretch_mode = 5
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ColorRect/TextureRect"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ColorRect"]
 position = Vector2(593, 427)
 scale = Vector2(7.73437, 7.73437)
 sprite_frames = SubResource("SpriteFrames_6nuav")

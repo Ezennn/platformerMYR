@@ -5,7 +5,7 @@
 [ext_resource type="FontFile" uid="uid://cbt5xvtsjjscv" path="res://assets/fonts/PixelOperator8.ttf" id="3_qkam6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qxv3t"]
-size = Vector2(1750, 1250)
+size = Vector2(1800, 1750)
 
 [node name="Sign" type="Area2D"]
 visibility_layer = 2
@@ -14,13 +14,13 @@ collision_mask = 2
 script = ExtResource("1_8yyji")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2.5, -27.5)
+position = Vector2(-2.5, -25)
 scale = Vector2(0.1, 0.1)
 shape = SubResource("RectangleShape2D_qxv3t")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-1.425, -1.425)
-scale = Vector2(5.20357, 5.20357)
+position = Vector2(-7.10543e-15, -3.8147e-06)
+scale = Vector2(5.71429, 5.71428)
 texture = ExtResource("2_ge2pc")
 region_enabled = true
 region_rect = Rect2(129, 50, 14, 14)

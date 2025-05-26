@@ -5,7 +5,7 @@ const DEATH_TIME = GameConstants.DEATH_TIME * GameConstants.DEATH_ENGINE_SLOWDOW
 var score = 0
 var player : Player
 @onready var score_label: Label = $ScoreLabel
-@onready var animated_sprite: AnimatedSprite2D = $ColorRect/TextureRect/AnimatedSprite2D
+@onready var animated_sprite: AnimatedSprite2D = $ColorRect/AnimatedSprite2D
 # minimum unlocked level 
 @export var unlocked_up_to_level = 1
 
