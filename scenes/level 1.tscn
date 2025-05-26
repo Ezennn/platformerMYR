@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://uv5cdmohgonf" path="res://scenes/game_manager.tscn" id="8_2sj2h"]
 [ext_resource type="PackedScene" uid="uid://dye557cuhntoy" path="res://scenes/red_(jump)_mushroom.tscn" id="9_2sj2h"]
 [ext_resource type="PackedScene" uid="uid://cf52cbj4eam28" path="res://scenes/pause_menu.tscn" id="10_dqu65"]
-[ext_resource type="Texture2D" uid="uid://0urp6fdlsafk" path="res://assets/screens/imageedit_2_4695843659.png" id="11_bsmkr"]
+[ext_resource type="Texture2D" uid="uid://0urp6fdlsafk" path="res://assets/Screens/imageedit_2_4695843659.png" id="11_bsmkr"]
 [ext_resource type="PackedScene" uid="uid://bbcmm6s3mc7d0" path="res://scenes/crown.tscn" id="12_3pdoh"]
 [ext_resource type="PackedScene" uid="uid://cabk7tunntrfq" path="res://scenes/sign.tscn" id="12_hc45n"]
 [ext_resource type="PackedScene" uid="uid://c2hit07jbcp6w" path="res://scenes/platform.tscn" id="13_gthes"]

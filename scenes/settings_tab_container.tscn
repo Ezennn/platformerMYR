@@ -30,9 +30,10 @@ theme_override_constants/side_margin = 24
 theme_override_constants/icon_separation = 24
 theme_override_constants/icon_max_width = 24
 theme_override_fonts/font = ExtResource("1_xpwon")
-current_tab = 0
+current_tab = 1
 
 [node name="Accessibility" type="TabBar" parent="TabContainer"]
+visible = false
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_xpwon")
 theme_override_font_sizes/font_size = 15
@@ -77,7 +78,6 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="Controls" type="TabBar" parent="TabContainer"]
-visible = false
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_xpwon")
 theme_override_font_sizes/font_size = 15
@@ -131,6 +131,10 @@ action_name = "dash"
 layout_mode = 2
 action_name = "pause"
 
+[node name="HotKeyBind6" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_vajfs")]
+layout_mode = 2
+action_name = "down"
+
 [node name="HSeparator2" type="HSeparator" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 
@@ -146,7 +150,8 @@ offset_bottom = 72.5
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("1_xpwon")
 theme_override_font_sizes/font_size = 20
-text = "Press new input button twice to confirm"
+text = "Only KeyBoard Inputs please!!!"
+horizontal_alignment = 1
 
 [node name="Accounts" type="TabBar" parent="TabContainer"]
 visible = false
