@@ -20,6 +20,9 @@ var player_control := true:
 		blocking_animation_playing = _player_control
 		player_control = _player_control
 		
+var parry_active =false 
+var parry_timer = Timer.new()
+		
 var last_tap_time_left: float = -1.0
 var last_tap_time_right: float = -1.0
 var refreshable_actions_on_contact: Array[String] = []
@@ -44,7 +47,10 @@ var animation_priority = {
 @onready var audio_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 func _ready() -> void:
-	pass
+	add_child(parry_timer)
+	parry_timer.wait_time = DASHTIME
+	parry_timer.one_shot = true
+	parry_timer.connect("timeout", Callable(self,"_on_parry_timeout"))
 	# the below code is no longer required, since killzones communicate directly to players
 	#for zone in get_tree().get_nodes_in_group("KillZones"):
 		#zone.player_death.connect(on_player_death)
@@ -74,6 +80,7 @@ func bounce() -> void:
 	
 func enemy_bounce():
 	velocity.y = JUMP_VELOCITY * 1.2
+	velocity.x = 0
 	audio_player.stream = preload("res://assets/sounds/jump.mp3")
 	audio_player.play()
 
@@ -108,8 +115,18 @@ func dash() -> void:
 	play_animation_for_duration("dash", DASHTIME)
 	audio_player.stream = preload("res://assets/sounds/dash.mp3")
 	audio_player.play()
-	velocity.x = ( -1 if animated_sprite.flip_h else 1 ) * DASHSPEED
+	if Input.is_action_pressed("move_left"):
+		velocity.x = -1 *DASHSPEED
+	elif Input.is_action_pressed("move_right"):
+		velocity.x = 1 *DASHSPEED
+	else :
+		velocity.x = 0 * DASHSPEED #frontflip
+		parry_active = true #parry
+		parry_timer.start()
 
+func _on_parry_timeout() :
+	parry_active = false
+	
 func _physics_process(delta: float) -> void:
 	if (player_control):
 		physics_when_playing(delta)
