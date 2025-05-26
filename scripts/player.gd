@@ -14,6 +14,12 @@ const FALL_THROUGH_TIMER = 0.2  # Duration to disable collision in seconds
 const DOUBLE_TAP_MAX_DELAY = GameConstants.DOUBLE_TAP_MAX_DELAY
 const DEATH_TIME = GameConstants.DEATH_TIME * GameConstants.DEATH_ENGINE_SLOWDOWN
 
+# triggered when win game by gamemanager
+var player_control := true:
+	set(_player_control):
+		blocking_animation_playing = _player_control
+		player_control = _player_control
+		
 var last_tap_time_left: float = -1.0
 var last_tap_time_right: float = -1.0
 var refreshable_actions_on_contact: Array[String] = []
@@ -105,6 +111,12 @@ func dash() -> void:
 	velocity.x = ( -1 if animated_sprite.flip_h else 1 ) * DASHSPEED
 
 func _physics_process(delta: float) -> void:
+	if (player_control):
+		physics_when_playing(delta)
+	else:
+		physics_player_control_detached(delta)
+
+func physics_when_playing(delta: float) -> void: 
 	move_and_slide()
 	update_wall_contact()
 	if blocking_animation_playing:
@@ -184,8 +196,18 @@ func handle_movement() -> void:
 func handle_gravity_and_animation(delta: float) -> void:
 	if not is_on_floor() :
 		velocity += get_gravity() * delta
-		if animated_sprite.animation != "dash":
-			play_animation_with_priority("jump")
+		play_animation_with_priority("jump")
 	if is_on_wall_left or is_on_wall_right:
 		# upper clamped using jump velocity to deal with wall jumps
 		velocity.y = clamp(velocity.y, JUMP_VELOCITY, MAX_FALL_SPEED_WHILE_ON_WALL)
+
+# triggered when win game by gamemanager
+func physics_player_control_detached(delta: float) -> void:
+	move_and_slide()
+	if bounce_pending:
+		velocity.y = min(velocity.y, BOUNCE_VELOCITY)
+		bounce_pending = false
+	if is_on_floor():
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+		animated_sprite.play("idle")
+	handle_gravity_and_animation(delta)

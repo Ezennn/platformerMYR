@@ -3,6 +3,7 @@ extends Node
 const DEATH_TIME = GameConstants.DEATH_TIME * GameConstants.DEATH_ENGINE_SLOWDOWN
 
 var score = 0
+var player : Player
 @onready var score_label: Label = $ScoreLabel
 @onready var animated_sprite: AnimatedSprite2D = $ColorRect/TextureRect/AnimatedSprite2D
 # minimum unlocked level 
@@ -17,6 +18,7 @@ func _hide_contents() -> void:
 		node.visible = false
 		
 func refresh_labels(new_state : GAME_SCREEN_STATE = GS.NA) -> void:
+	_refresh_positions()
 	_hide_contents()
 	match (new_state):
 		GS.LEVEL:
@@ -34,6 +36,9 @@ func refresh_labels(new_state : GAME_SCREEN_STATE = GS.NA) -> void:
 		_: 
 			pass
 
+func _refresh_positions():
+	animated_sprite.position = Vector2(593.0,427.0)
+	
 func add_point():
 	score += 1
 	score_label.text = "Coins: " + str(score)
@@ -53,6 +58,9 @@ func play_animation_for_duration(anim_name: String, duration: float, sprite : An
 
 func _on_ready() -> void:
 	self.visible = true
+	var player_list = get_tree().get_nodes_in_group("Player")
+	if len(player_list) != 0:
+		player = player_list [0] as Player
 	refresh_labels(GS.LEVEL)
 	# no longer required as killzones directly communicate with players and game manager 
 	#for zone in get_tree().get_nodes_in_group("KillZones"):
@@ -63,10 +71,11 @@ func on_player_death() -> void:
 	play_animation_for_duration("dead", DEATH_TIME)
 
 func win(level : int) -> void:
-	animated_sprite.position.y -= 200
-	animated_sprite.position.x -= 100
+	refresh_labels(GS.WIN)
+	player.player_control = false
+	animated_sprite.position.x -= 122
+	animated_sprite.position.y -= 150
 	$WinLabel.text = "Level " + str(level) + " Won!"
 	unlocked_up_to_level = min(5, max(unlocked_up_to_level, level + 1))
 	animated_sprite.play("idle")
 	$VictorySound.play()
-	refresh_labels(GS.WIN)

@@ -30,6 +30,7 @@ offset_left = -90.0
 offset_top = -115.0
 offset_right = 85.0
 offset_bottom = -55.0
+size_flags_vertical = 8
 color = Color(0.329412, 0.329412, 0.329412, 0.784314)
 
 [node name="Label" type="Label" parent="ColorRect"]

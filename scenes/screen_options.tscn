@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://2oy3ij8l7nqv"]
 
 [ext_resource type="FontFile" uid="uid://cbt5xvtsjjscv" path="res://assets/fonts/PixelOperator8.ttf" id="1_pebty"]
-[ext_resource type="Script" uid="uid://bn5jndvilqojp" path="res://scenes/option_button.gd" id="2_rwryf"]
+[ext_resource type="Script" uid="uid://bn5jndvilqojp" path="res://scripts/option_button.gd" id="2_rwryf"]
 
 [node name="ScreenOptions" type="Control"]
 custom_minimum_size = Vector2(264, 0)

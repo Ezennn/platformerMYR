@@ -321,6 +321,8 @@ autowrap_mode = 2
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 2.0
+offset_bottom = -183.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.785093, 0, 0.219485, 1)
@@ -351,7 +353,7 @@ expand_mode = 3
 stretch_mode = 5
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ColorRect/TextureRect"]
-position = Vector2(557, 483)
+position = Vector2(593, 427)
 scale = Vector2(7.73437, 7.73437)
 sprite_frames = SubResource("SpriteFrames_6nuav")
 animation = &"idle"
@@ -403,5 +405,13 @@ scale = Vector2(0.26, 0.26)
 stream = ExtResource("8_jdad8")
 volume_db = -8.0
 bus = &"SFX"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+visible = false
+position = Vector2(0, -7)
+zoom = Vector2(4, 4)
+limit_bottom = 1000
+limit_smoothed = true
+position_smoothing_enabled = true
 
 [connection signal="ready" from="." to="." method="_on_ready"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cn031gnsyngh1"]
 
 [ext_resource type="PackedScene" uid="uid://2oy3ij8l7nqv" path="res://scenes/screen_options.tscn" id="1_yvuve"]
-[ext_resource type="Script" uid="uid://bdkjf70n2wstc" path="res://scenes/window_mode.gd" id="2_q1kt7"]
+[ext_resource type="Script" uid="uid://bdkjf70n2wstc" path="res://scripts/window_mode.gd" id="2_q1kt7"]
 
 [node name="WindowMode" instance=ExtResource("1_yvuve")]
 
@@ -9,7 +9,6 @@
 custom_minimum_size = Vector2(350, 0)
 
 [node name="Label" parent="HBoxContainer" index="0"]
-custom_minimum_size = Vector2(250, 0)
 text = "Window Mode"
 
 [node name="OptionButton" parent="HBoxContainer" index="1"]
