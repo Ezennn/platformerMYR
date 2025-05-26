@@ -6,6 +6,8 @@
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0pvn7"]
 friction = 0.0
+bounce = 1.0
+absorbent = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kq38r"]
 atlas = ExtResource("2_4q1e0")
@@ -99,16 +101,17 @@ animations = [{
 size = Vector2(12, 9)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0pvn7"]
-size = Vector2(8, 1)
+size = Vector2(10, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4q1e0"]
-size = Vector2(6, 10)
+size = Vector2(8, 12)
 
-[node name="Green Slime" type="AnimatableBody2D"]
+[node name="Green Slime" type="RigidBody2D" groups=["Enemy"]]
 position = Vector2(0, -5)
 collision_mask = 7
 physics_material_override = SubResource("PhysicsMaterial_0pvn7")
-sync_to_physics = false
+can_sleep = false
+lock_rotation = true
 script = ExtResource("1_0pvn7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -144,7 +147,7 @@ position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_0pvn7")
 
 [node name="PlayerDontSinkDeep" type="CollisionShape2D" parent="."]
-position = Vector2(0, 7)
+position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_4q1e0")
 
 [node name="RayCastDown" type="RayCast2D" parent="."]
