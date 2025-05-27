@@ -1,13 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://ljtvmhn8b01e"]
+[gd_scene load_steps=18 format=3 uid="uid://ljtvmhn8b01e"]
 
 [ext_resource type="Script" uid="uid://bolknreobe3we" path="res://scripts/green_slime.gd" id="1_0pvn7"]
 [ext_resource type="Texture2D" uid="uid://qb53c0x8oche" path="res://assets/sprites/slime_green.png" id="2_4q1e0"]
 [ext_resource type="PackedScene" uid="uid://d11i11xfv5sgw" path="res://scenes/killzone.tscn" id="3_boo2g"]
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0pvn7"]
-friction = 0.0
-bounce = 1.0
-absorbent = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kq38r"]
 atlas = ExtResource("2_4q1e0")
@@ -106,20 +101,14 @@ size = Vector2(10, 1)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4q1e0"]
 size = Vector2(8, 12)
 
-[node name="Green Slime" type="RigidBody2D" groups=["Enemy"]]
+[node name="Green Slime" type="StaticBody2D" groups=["Enemy"]]
 position = Vector2(0, -5)
-collision_mask = 7
-physics_material_override = SubResource("PhysicsMaterial_0pvn7")
-can_sleep = false
-lock_rotation = true
 script = ExtResource("1_0pvn7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_e30mu")
-animation = &"Aggressive Idle"
+animation = &"Angry"
 autoplay = "Aggressive Idle"
-frame = 3
-frame_progress = 0.753883
 
 [node name="Killzone" parent="." instance=ExtResource("3_boo2g")]
 collision_layer = 8

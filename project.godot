@@ -19,6 +19,7 @@ config/icon="uid://djyry0x7rat7s"
 
 Music="*res://scenes/music.tscn"
 GameConstants="*res://scripts/game_constants.gd"
+GameManager="*res://scenes/game_manager.tscn"
 
 [display]
 
@@ -33,6 +34,7 @@ GameManager=""
 Player=""
 Enemy=""
 Projectile=""
+Ladder=""
 
 [input]
 

@@ -11,13 +11,8 @@ var RES_DICT : Dictionary = {
 
 func _ready() :
 	add_resolution_items()
-	option_button.item_selected.connect(on_resolution_selected)
 	
 	
 func add_resolution_items() -> void :
 	for resolution_size in RES_DICT :
 		option_button.add_item(resolution_size)
-
-func on_resolution_selected(index : int) -> void :
-	pass
-	

@@ -2,9 +2,10 @@ extends Node
 
 const DEATH_TIME = GameConstants.DEATH_TIME * GameConstants.DEATH_ENGINE_SLOWDOWN
 
+var previous_scene : Node = null
 var score = 0
 var player : Player
-@onready var score_label: Label = $ScoreLabel
+@onready var score_label: Label = $ScoreRect/ScoreLabel
 @onready var animated_sprite: AnimatedSprite2D = $ColorRect/AnimatedSprite2D
 # minimum unlocked level 
 @export var unlocked_up_to_level = 1
@@ -56,19 +57,11 @@ func play_animation_for_duration(anim_name: String, duration: float, sprite : An
 	frames.set_animation_speed(anim_name, new_fps)
 	sprite.play(anim_name)
 
-func _on_ready() -> void:
-	self.visible = true
-	var player_list = get_tree().get_nodes_in_group("Player")
-	if len(player_list) != 0:
-		player = player_list [0] as Player
-	refresh_labels(GS.LEVEL)
-	# no longer required as killzones directly communicate with players and game manager 
-	#for zone in get_tree().get_nodes_in_group("KillZones"):
-		#zone.player_death.connect(_on_player_death)
-
 func on_player_death() -> void:
 	refresh_labels(GS.LOSE)
 	play_animation_for_duration("dead", DEATH_TIME)
+	await $ColorRect/AnimatedSprite2D.animation_finished
+	refresh_labels(GS.LEVEL)
 
 func win(level : int) -> void:
 	refresh_labels(GS.WIN)
@@ -79,3 +72,24 @@ func win(level : int) -> void:
 	unlocked_up_to_level = min(5, max(unlocked_up_to_level, level + 1))
 	animated_sprite.play("idle")
 	$VictorySound.play()
+
+func _ready():
+	previous_scene = get_tree().current_scene
+	set_process(true)
+	_on_scene_changed(previous_scene)
+
+func _process(delta):
+	var current_scene = get_tree().current_scene
+	if current_scene != previous_scene and current_scene != null:
+		previous_scene = current_scene
+		_on_scene_changed(current_scene)
+		
+func _on_scene_changed(current_scene) -> void:
+	self.visible = true
+	var player_list = get_tree().get_nodes_in_group("Player")
+	if len(player_list) != 0:
+		player = player_list [0] as Player
+	if current_scene.has_method("_GameManager_get_game_state"):
+		refresh_labels(current_scene._GameManager_get_game_state())
+	else:
+		refresh_labels(GS.NA)
