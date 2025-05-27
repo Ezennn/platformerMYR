@@ -1,6 +1,7 @@
-[gd_scene load_steps=21 format=3 uid="uid://llwlc6mmbxdb"]
+[gd_scene load_steps=22 format=3 uid="uid://llwlc6mmbxdb"]
 
 [ext_resource type="Script" uid="uid://bdqvxsc6demm3" path="res://scenes/red_slime.gd" id="1_jhcl7"]
+[ext_resource type="PackedScene" uid="uid://cdtd2nlfpft3n" path="res://scenes/projectile.tscn" id="2_8l41y"]
 [ext_resource type="Texture2D" uid="uid://cibbvghmfg66k" path="res://assets/sprites/slime_purple.png" id="2_dp2bf"]
 [ext_resource type="PackedScene" uid="uid://d11i11xfv5sgw" path="res://scenes/killzone.tscn" id="3_8l41y"]
 
@@ -124,6 +125,7 @@ collision_mask = 7
 physics_material_override = SubResource("PhysicsMaterial_0pvn7")
 sync_to_physics = false
 script = ExtResource("1_jhcl7")
+projectile_scene = ExtResource("2_8l41y")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_e30mu")
@@ -164,5 +166,9 @@ shape = SubResource("RectangleShape2D_4q1e0")
 target_position = Vector2(0, 8)
 collision_mask = 5
 
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
 [connection signal="body_entered" from="Killzone" to="." method="_on_killzone_body_entered"]
 [connection signal="body_entered" from="HeadHitbox" to="." method="_on_head_hit"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

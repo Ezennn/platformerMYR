@@ -7,6 +7,9 @@ var direction = 1
 @onready var ray_cast_down: RayCast2D = $RayCastDown
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var head_hitbox: Area2D = $HeadHitbox
+@onready var timer: Timer = $Timer
+@export var projectile_scene: PackedScene
+
 
 func _on_killzone_body_entered(body: Node2D) -> void:
 	$HeadHitbox.disconnect("body_entered", Callable(self, "_on_head_hit"))
@@ -28,3 +31,12 @@ func _process(delta: float) -> void:
 	position.x += direction * SPEED * delta
 	if not ray_cast_down.is_colliding():
 		position.y += 0.5
+		
+func _on_timer_timeout() :
+	shoot_projectile()
+	
+func shoot_projectile():
+	var projectile = projectile_scene.instantiate()
+	get_parent().add_child(projectile)
+	projectile.position = global_position + Vector2(direction*10,0)
+	projectile.direction = Vector2(direction, 0)

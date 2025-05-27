@@ -1,0 +1,128 @@
+[gd_scene load_steps=18 format=3 uid="uid://cdtd2nlfpft3n"]
+
+[ext_resource type="Script" uid="uid://vs7qk3turned" path="res://projectile.gd" id="1_q3m7n"]
+[ext_resource type="Texture2D" uid="uid://mg0ls1bgn08t" path="res://assets/Effects/Fire Effect and Bullet 16x16.png" id="2_softn"]
+[ext_resource type="PackedScene" uid="uid://d11i11xfv5sgw" path="res://scenes/killzone.tscn" id="3_softn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6q2a6"]
+atlas = ExtResource("2_softn")
+region = Rect2(480, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_byeak"]
+atlas = ExtResource("2_softn")
+region = Rect2(496, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jxwu6"]
+atlas = ExtResource("2_softn")
+region = Rect2(512, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w7nm8"]
+atlas = ExtResource("2_softn")
+region = Rect2(528, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6c2e5"]
+atlas = ExtResource("2_softn")
+region = Rect2(480, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pl1gp"]
+atlas = ExtResource("2_softn")
+region = Rect2(496, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ejmht"]
+atlas = ExtResource("2_softn")
+region = Rect2(512, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_031o2"]
+atlas = ExtResource("2_softn")
+region = Rect2(528, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xo60o"]
+atlas = ExtResource("2_softn")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mxgir"]
+atlas = ExtResource("2_softn")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rimnf"]
+atlas = ExtResource("2_softn")
+region = Rect2(0, 64, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l47rv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6q2a6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_byeak")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jxwu6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w7nm8")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6c2e5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pl1gp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ejmht")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_031o2")
+}],
+"loop": true,
+"name": &"onhit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xo60o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mxgir")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rimnf")
+}],
+"loop": true,
+"name": &"start",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fooc5"]
+radius = 6.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_softn"]
+radius = 3.0
+
+[node name="Projectile" type="AnimatableBody2D"]
+script = ExtResource("1_q3m7n")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_l47rv")
+animation = &"idle"
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="Killzone" parent="." instance=ExtResource("3_softn")]
+
+[node name="KillBox" type="CollisionShape2D" parent="Killzone"]
+position = Vector2(1, 0)
+shape = SubResource("CircleShape2D_fooc5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_softn")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
