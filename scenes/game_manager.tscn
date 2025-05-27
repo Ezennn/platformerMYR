@@ -304,11 +304,18 @@ animations = [{
 [node name="GameManager" type="CanvasLayer" groups=["GameManager"]]
 script = ExtResource("1_itnma")
 
-[node name="ScoreLabel" type="Label" parent="." groups=["LevelGroup"]]
+[node name="ScoreRect" type="ColorRect" parent="." groups=["LevelGroup"]]
+offset_right = 232.0
+offset_bottom = 40.0
+color = Color(1, 1, 1, 0.392157)
+
+[node name="ScoreLabel" type="Label" parent="ScoreRect" groups=["LevelGroup"]]
 z_index = -2
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_bottom = 27.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.027451, 0.105882, 1, 1)
@@ -395,13 +402,5 @@ scale = Vector2(0.26, 0.26)
 stream = ExtResource("8_jdad8")
 volume_db = -8.0
 bus = &"SFX"
-
-[node name="Camera2D" type="Camera2D" parent="."]
-visible = false
-position = Vector2(0, -7)
-zoom = Vector2(4, 4)
-limit_bottom = 1000
-limit_smoothed = true
-position_smoothing_enabled = true
 
 [connection signal="ready" from="." to="." method="_on_ready"]

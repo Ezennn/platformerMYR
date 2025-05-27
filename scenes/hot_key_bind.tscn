@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://d1wve1jmyxe6g"]
 
-[ext_resource type="Script" uid="uid://dngwe75203gry" path="res://hot_key_bind.gd" id="1_ttn4i"]
+[ext_resource type="Script" uid="uid://dngwe75203gry" path="res://scripts/hot_key_bind.gd" id="1_ttn4i"]
 [ext_resource type="FontFile" uid="uid://cbt5xvtsjjscv" path="res://assets/fonts/PixelOperator8.ttf" id="2_1s8ig"]
 
 [node name="HotKeyBind" type="Control"]

@@ -4,13 +4,13 @@ extends Area2D
 @export var ALWAYS_SHOW : bool = false
 @export var textToShow : String = ""
 
-func _on_body_entered(body: Node2D) -> void:
+func _on_body_entered(_body: Node2D) -> void:
 	$ColorRect.visible = true
 	if textToShow != "":
 		$ColorRect/Label.text = textToShow
 
 
-func _on_body_exited(body: Node2D) -> void:
+func _on_body_exited(_body: Node2D) -> void:
 	if not ALWAYS_SHOW:
 		$ColorRect.visible = false
 
