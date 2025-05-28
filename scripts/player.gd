@@ -205,7 +205,8 @@ func handle_movement() -> void:
 	elif direction:
 		velocity.x = direction * SPEED
 		animated_sprite.flip_h = direction < 0
-		animated_sprite.play("run")
+		if not((direction>0 && is_on_wall_right) || (direction <0 && is_on_wall_left)):
+			animated_sprite.play("run")
 	elif is_on_floor() or is_on_ladder():
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		animated_sprite.play("idle")
