@@ -301,11 +301,11 @@ animations = [{
 "speed": 12.0
 }]
 
-[node name="GameManager" type="CanvasLayer" groups=["GameManager"]]
+[node name="GameManager" type="CanvasLayer"]
 script = ExtResource("1_itnma")
 
-[node name="ScoreRect" type="ColorRect" parent="." groups=["LevelGroup"]]
-offset_right = 232.0
+[node name="ScoreRect" type="ColorRect" parent="." groups=["LevelGroup", "WinGroup"]]
+offset_right = 320.0
 offset_bottom = 40.0
 color = Color(1, 1, 1, 0.392157)
 
@@ -321,7 +321,7 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(0.027451, 0.105882, 1, 1)
 theme_override_fonts/font = ExtResource("2_6nuav")
 theme_override_font_sizes/font_size = 32
-text = "Coins: 0"
+text = "Coins: 12/12"
 autowrap_mode = 2
 
 [node name="DeadLabel" type="Label" parent="." groups=["DeadGroup"]]
