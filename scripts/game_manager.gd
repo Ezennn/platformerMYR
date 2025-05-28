@@ -2,6 +2,7 @@ extends Node
 
 const DEATH_TIME = GameConstants.DEATH_TIME * GameConstants.DEATH_ENGINE_SLOWDOWN
 
+var max_score: int = 0
 var previous_scene : Node = null
 var score = 0
 var player : Player
@@ -42,7 +43,7 @@ func _refresh_positions():
 	
 func add_point():
 	score += 1
-	score_label.text = "Coins: " + str(score)
+	score_label.text = "Coins: " + str(score) + "/" +str(max_score)
 
 func play_animation_for_duration(anim_name: String, duration: float, sprite : AnimatedSprite2D = animated_sprite) -> void:
 	var frames = sprite.sprite_frames
@@ -73,12 +74,16 @@ func win(level : int) -> void:
 	animated_sprite.play("idle")
 	$VictorySound.play()
 
+func inc_max_score() -> void:
+	max_score += 1
+	score_label.text = "Coins: " + str(score) + "/" +str(max_score)
+	
 func _ready():
 	previous_scene = get_tree().current_scene
 	set_process(true)
 	_on_scene_changed(previous_scene)
 
-func _process(delta):
+func _process(_delta):
 	var current_scene = get_tree().current_scene
 	if current_scene != previous_scene and current_scene != null:
 		previous_scene = current_scene

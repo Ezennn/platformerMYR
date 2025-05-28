@@ -198,7 +198,7 @@ func try_jump() -> bool:
 	return false
 
 func handle_movement() -> void:
-	var direction = Input.get_axis("move_left", "move_right") if player_control else 0
+	var direction = Input.get_axis("move_left", "move_right") if player_control else 0.0
 	if jump_x_velocity_override != null:
 		velocity.x = jump_x_velocity_override
 		jump_x_velocity_override = null
