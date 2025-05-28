@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://deywe16vdvt1x"]
+
+[ext_resource type="Texture2D" uid="uid://besuojlosimjf" path="res://assets/sprites/black arrow no background.png" id="1_xky7p"]
+
+[node name="RightArrowSprite" type="Sprite2D"]
+position = Vector2(4.76837e-07, 8.34465e-07)
+rotation = 3.14159
+scale = Vector2(0.0557491, 0.105263)
+texture = ExtResource("1_xky7p")
+region_enabled = true
+region_rect = Rect2(40, 104, 287, 152)
