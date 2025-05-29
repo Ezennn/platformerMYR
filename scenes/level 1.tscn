@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://bofabqvdodi8y"]
+[gd_scene load_steps=23 format=4 uid="uid://bofabqvdodi8y"]
 
 [ext_resource type="Script" uid="uid://bhlhnq6lh8vwv" path="res://scripts/level_1.gd" id="1_gthes"]
 [ext_resource type="TileSet" uid="uid://caj3ura0jbt4r" path="res://tilesets/world_default_tileset.tres" id="3_2sj2h"]
@@ -72,22 +72,43 @@ tile_set = ExtResource("3_2sj2h")
 
 [node name="platforms" type="Node" parent="."]
 
-[node name="Platform2" parent="platforms" instance=ExtResource("13_gthes")]
-position = Vector2(160, 32)
-
-[node name="CollisionShape2D" parent="platforms/Platform2" index="1"]
-position = Vector2(-0.5, 5.25)
-
-[node name="AnimationPlayer" parent="platforms/Platform2" index="2"]
-libraries = {
-&"": SubResource("AnimationLibrary_m7v2g")
-}
-autoplay = "new_animation"
-
 [node name="staticPlatforms" type="Node" parent="platforms"]
 
 [node name="Platform8" parent="platforms/staticPlatforms" instance=ExtResource("13_gthes")]
 position = Vector2(-267, -98)
+
+[node name="Platform15" parent="platforms/staticPlatforms" instance=ExtResource("13_gthes")]
+position = Vector2(1432, -120)
+
+[node name="Platform25" parent="platforms/staticPlatforms" instance=ExtResource("13_gthes")]
+position = Vector2(640, -256)
+
+[node name="Platform16" parent="platforms/staticPlatforms" instance=ExtResource("13_gthes")]
+position = Vector2(1432, -200)
+
+[node name="Platform17" parent="platforms/staticPlatforms" instance=ExtResource("13_gthes")]
+position = Vector2(1376, -240)
+
+[node name="Platform24" parent="platforms/staticPlatforms" instance=ExtResource("13_gthes")]
+position = Vector2(1376, -240)
+
+[node name="Platform18" parent="platforms/staticPlatforms" instance=ExtResource("13_gthes")]
+position = Vector2(1304, -200)
+
+[node name="Platform19" parent="platforms/staticPlatforms" instance=ExtResource("13_gthes")]
+position = Vector2(1240, -232)
+
+[node name="Platform20" parent="platforms/staticPlatforms" instance=ExtResource("13_gthes")]
+position = Vector2(1224, -200)
+
+[node name="Platform21" parent="platforms/staticPlatforms" instance=ExtResource("13_gthes")]
+position = Vector2(1144, -240)
+
+[node name="Platform22" parent="platforms/staticPlatforms" instance=ExtResource("13_gthes")]
+position = Vector2(1072, -264)
+
+[node name="Platform23" parent="platforms/staticPlatforms" instance=ExtResource("13_gthes")]
+position = Vector2(1032, -304)
 
 [node name="Platform9" parent="platforms/staticPlatforms" instance=ExtResource("13_gthes")]
 position = Vector2(-345, -129)
@@ -109,27 +130,6 @@ position = Vector2(-494, -33)
 
 [node name="Signs" type="Node" parent="."]
 
-[node name="Sign" parent="Signs" instance=ExtResource("12_hc45n")]
-position = Vector2(-232, 504)
-
-[node name="ColorRect" parent="Signs/Sign" index="2"]
-offset_top = -145.0
-metadata/_edit_use_anchors_ = true
-
-[node name="Label" parent="Signs/Sign/ColorRect" index="0"]
-text = "You're not supposed to be here. Turn back."
-metadata/_edit_use_anchors_ = true
-
-[node name="Sign2" parent="Signs" instance=ExtResource("12_hc45n")]
-position = Vector2(40, 24)
-
-[node name="ColorRect" parent="Signs/Sign2" index="2"]
-offset_top = -125.0
-offset_bottom = -45.0
-
-[node name="Label" parent="Signs/Sign2/ColorRect" index="0"]
-text = "Get the crown to win! but where is it?"
-
 [node name="Sign3" parent="Signs" instance=ExtResource("12_hc45n")]
 position = Vector2(8, 24)
 
@@ -143,24 +143,6 @@ offset_bottom = -45.0
 text = "Move: WASD
 Dash: C / Double ASD
 DoubleJump : WW"
-
-[node name="Sign4" parent="Signs" instance=ExtResource("12_hc45n")]
-position = Vector2(136, 152)
-
-[node name="CollisionShape2D" parent="Signs/Sign4" index="0"]
-position = Vector2(-22.5001, -40)
-
-[node name="Sprite2D" parent="Signs/Sign4" index="1"]
-rotation = 1.5708
-
-[node name="ColorRect" parent="Signs/Sign4" index="2"]
-offset_left = -160.0
-offset_top = -125.0
-offset_right = 155.0
-offset_bottom = -45.0
-
-[node name="Label" parent="Signs/Sign4/ColorRect" index="0"]
-text = "HOW???? NEXT TIME WON'T BE SO EASY"
 
 [node name="Sign5" parent="Signs" instance=ExtResource("12_hc45n")]
 position = Vector2(504, 24)
@@ -192,19 +174,6 @@ offset_bottom = -45.0
 [node name="Label" parent="Signs/Sign6/ColorRect" index="0"]
 text = "but where's the crown..?"
 
-[node name="Sign10" parent="Signs" instance=ExtResource("12_hc45n")]
-position = Vector2(1320, -200)
-
-[node name="Sprite2D" parent="Signs/Sign10" index="1"]
-rotation = -1.5708
-
-[node name="ColorRect" parent="Signs/Sign10" index="2"]
-offset_top = -125.0
-offset_bottom = -45.0
-
-[node name="Label" parent="Signs/Sign10/ColorRect" index="0"]
-text = "Not here..."
-
 [node name="PauseMenu" type="CanvasLayer" parent="."]
 
 [node name="Pause_Menu" parent="PauseMenu" instance=ExtResource("10_dqu65")]
@@ -217,11 +186,59 @@ position = Vector2(5, 139)
 position = Vector2(-5, 133)
 shape = SubResource("WorldBoundaryShape2D_p57ef")
 
-[editable path="platforms/Platform2"]
-[editable path="Signs/Sign"]
-[editable path="Signs/Sign2"]
+[connection signal="body_entered" from="TileMap/Midground/Coin" to="TileMap/Midground/Coin" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/Midground/@Area2D@22113" to="TileMap/Midground/@Area2D@22113" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/Midground/@Area2D@22114" to="TileMap/Midground/@Area2D@22114" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/Midground/@Area2D@22115" to="TileMap/Midground/@Area2D@22115" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/Midground/@Area2D@22199" to="TileMap/Midground/@Area2D@22199" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/Midground/@Area2D@22200" to="TileMap/Midground/@Area2D@22200" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/Midground/@Area2D@22201" to="TileMap/Midground/@Area2D@22201" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/Midground/@Area2D@22202" to="TileMap/Midground/@Area2D@22202" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/Midground/@Area2D@22203" to="TileMap/Midground/@Area2D@22203" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/Midground/@Area2D@22204" to="TileMap/Midground/@Area2D@22204" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/Midground/@Area2D@22218" to="TileMap/Midground/@Area2D@22218" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/Midground/@Area2D@22241" to="TileMap/Midground/@Area2D@22241" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/Midground/@Area2D@22248" to="TileMap/Midground/@Area2D@22248" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/Midground/@Area2D@22249" to="TileMap/Midground/@Area2D@22249" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/Midground/@Area2D@22250" to="TileMap/Midground/@Area2D@22250" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/Midground/@Area2D@22251" to="TileMap/Midground/@Area2D@22251" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/Midground/@Area2D@22252" to="TileMap/Midground/@Area2D@22252" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/Midground/@Area2D@22253" to="TileMap/Midground/@Area2D@22253" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/Midground/@Area2D@22261" to="TileMap/Midground/@Area2D@22261" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/Midground/@Area2D@22262" to="TileMap/Midground/@Area2D@22262" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/Midground/@Area2D@22263" to="TileMap/Midground/@Area2D@22263" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/Midground/@Area2D@22264" to="TileMap/Midground/@Area2D@22264" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/Midground/@Area2D@22265" to="TileMap/Midground/@Area2D@22265" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/Midground/@Area2D@22277" to="TileMap/Midground/@Area2D@22277" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/Midground/@Area2D@22278" to="TileMap/Midground/@Area2D@22278" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/Midground/@Area2D@22279" to="TileMap/Midground/@Area2D@22279" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/Midground/@Area2D@22280" to="TileMap/Midground/@Area2D@22280" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/Midground/Crown" to="TileMap/Midground/Crown" method="_on_body_entered"]
+[connection signal="win" from="TileMap/Midground/Crown" to="TileMap/Midground/Crown" method="_on_win"]
+[connection signal="body_entered" from="TileMap/Midground/@Area2D@22324" to="TileMap/Midground/@Area2D@22324" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/Midground/@Area2D@22325" to="TileMap/Midground/@Area2D@22325" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/Midground/@Area2D@22326" to="TileMap/Midground/@Area2D@22326" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/Midground/@Area2D@30120" to="TileMap/Midground/@Area2D@30120" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/Midground/@Area2D@30121" to="TileMap/Midground/@Area2D@30121" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/Midground/@Area2D@30122" to="TileMap/Midground/@Area2D@30122" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/Midground/@Area2D@30123" to="TileMap/Midground/@Area2D@30123" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/Midground/@Area2D@30124" to="TileMap/Midground/@Area2D@30124" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/Midground/@Area2D@30125" to="TileMap/Midground/@Area2D@30125" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/Midground/@Area2D@30126" to="TileMap/Midground/@Area2D@30126" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/Midground/@Area2D@30127" to="TileMap/Midground/@Area2D@30127" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/Midground/@Area2D@30128" to="TileMap/Midground/@Area2D@30128" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/Midground/@Area2D@30129" to="TileMap/Midground/@Area2D@30129" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/Midground/@Area2D@30130" to="TileMap/Midground/@Area2D@30130" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/Midground/@Area2D@38158" to="TileMap/Midground/@Area2D@38158" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/Midground/@Area2D@38159" to="TileMap/Midground/@Area2D@38159" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/Midground/@Area2D@38160" to="TileMap/Midground/@Area2D@38160" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/Midground/@Area2D@38161" to="TileMap/Midground/@Area2D@38161" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/Midground/@Area2D@38162" to="TileMap/Midground/@Area2D@38162" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/Midground/@Area2D@38163" to="TileMap/Midground/@Area2D@38163" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/Midground/@Area2D@38164" to="TileMap/Midground/@Area2D@38164" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/Midground/@Area2D@38166" to="TileMap/Midground/@Area2D@38166" method="_on_body_entered"]
+[connection signal="pressed" from="PauseMenu/PauseButton" to="PauseMenu/Pause_Menu" method="_on_pause_button_pressed"]
+
 [editable path="Signs/Sign3"]
-[editable path="Signs/Sign4"]
 [editable path="Signs/Sign5"]
 [editable path="Signs/Sign6"]
-[editable path="Signs/Sign10"]
