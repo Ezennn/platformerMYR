@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://2f56fohkdqno" path="res://assets/sprites/platforms.png" id="1_ba0x2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ba0x2"]
-size = Vector2(32, 7)
+size = Vector2(33, 13.5)
 
 [node name="Platform" type="AnimatableBody2D"]
 collision_layer = 4
