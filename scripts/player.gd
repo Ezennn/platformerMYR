@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Player
 
-const SPEED = 130.0
+const SPEED = 100.0
 const DASHSPEED = 200.0
 const DASHTIME = 0.3
 const JUMP_VELOCITY = -300.0
