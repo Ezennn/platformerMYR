@@ -8,10 +8,14 @@ extends Area2D
 func  _process(delta : float) -> void:
 	position += direction * speed * delta
 	
-func _on_body_entered(_body : Node2D) -> void:
-	$Killzone.dequeue()
-	$AnimatedSprite2D.play("onhit")
-	#speed = 0
+func _on_body_entered(body : Node2D) -> void:
+	if body.is_in_group("Enemy"):
+		return
+	self.collision_mask = 0
+	$Killzone.collision_mask = 0
+	$Timer.queue_free()
+	speed = 0
+	GameManager.play_animation_for_duration("onhit", GameManager.DEATH_TIME, $AnimatedSprite2D)
 	await $AnimatedSprite2D.animation_finished
 	queue_free()
 		
