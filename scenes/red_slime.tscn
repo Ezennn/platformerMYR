@@ -1,8 +1,8 @@
-[gd_scene load_steps=21 format=3 uid="uid://bma34f5671vn"]
+[gd_scene load_steps=20 format=3 uid="uid://bma34f5671vn"]
 
-[ext_resource type="Script" uid="uid://bdqvxsc6demm3" path="res://scripts/red_slime.gd" id="1_jhcl7"]
+[ext_resource type="Script" uid="uid://dqq6hgkulk2oa" path="res://scenes/red_slime.gd" id="1_jhcl7"]
 [ext_resource type="Texture2D" uid="uid://cibbvghmfg66k" path="res://assets/sprites/slime_purple.png" id="2_dp2bf"]
-[ext_resource type="PackedScene" uid="uid://d11i11xfv5sgw" path="res://scenes/killzone.tscn" id="3_8l41y"]
+[ext_resource type="PackedScene" uid="uid://dnj53nu7bcbhd" path="res://scenes/projectile.tscn" id="2_jhcl7"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0pvn7"]
 friction = 0.0
@@ -109,34 +109,22 @@ animations = [{
 "speed": 2.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mp6ra"]
-size = Vector2(12, 9)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0pvn7"]
 size = Vector2(8, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4q1e0"]
 size = Vector2(6, 10)
 
-[node name="Red Slime" type="AnimatableBody2D"]
+[node name="Red Slime" type="StaticBody2D"]
 position = Vector2(0, -5)
-collision_mask = 7
 physics_material_override = SubResource("PhysicsMaterial_0pvn7")
-sync_to_physics = false
 script = ExtResource("1_jhcl7")
+projectile_scene = ExtResource("2_jhcl7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_e30mu")
 animation = &"Aggressive Idle"
 autoplay = "Aggressive Idle"
-
-[node name="Killzone" parent="." instance=ExtResource("3_8l41y")]
-collision_layer = 8
-script = null
-
-[node name="Killbox" type="CollisionShape2D" parent="Killzone"]
-position = Vector2(0, 7.5)
-shape = SubResource("RectangleShape2D_mp6ra")
 
 [node name="RayCastRight" type="RayCast2D" parent="."]
 position = Vector2(0, 5)
@@ -161,8 +149,12 @@ position = Vector2(0, 7)
 shape = SubResource("RectangleShape2D_4q1e0")
 
 [node name="RayCastDown" type="RayCast2D" parent="."]
+position = Vector2(0, 5)
 target_position = Vector2(0, 8)
 collision_mask = 5
 
-[connection signal="body_entered" from="Killzone" to="." method="_on_killzone_body_entered"]
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
 [connection signal="body_entered" from="HeadHitbox" to="." method="_on_head_hit"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
