@@ -113,9 +113,9 @@ animations = [{
 size = Vector2(8, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4q1e0"]
-size = Vector2(6, 10)
+size = Vector2(10, 10)
 
-[node name="Red Slime" type="StaticBody2D"]
+[node name="Red Slime" type="StaticBody2D" groups=["Enemy"]]
 position = Vector2(0, -5)
 physics_material_override = SubResource("PhysicsMaterial_0pvn7")
 script = ExtResource("1_jhcl7")
@@ -125,6 +125,8 @@ projectile_scene = ExtResource("2_jhcl7")
 sprite_frames = SubResource("SpriteFrames_e30mu")
 animation = &"Aggressive Idle"
 autoplay = "Aggressive Idle"
+frame = 2
+frame_progress = 0.197706
 
 [node name="RayCastRight" type="RayCast2D" parent="."]
 position = Vector2(0, 5)
@@ -156,5 +158,6 @@ collision_mask = 5
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
+[connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="body_entered" from="HeadHitbox" to="." method="_on_head_hit"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

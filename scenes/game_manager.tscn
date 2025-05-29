@@ -302,6 +302,8 @@ animations = [{
 }]
 
 [node name="GameManager" type="CanvasLayer"]
+layer = 2
+visible = false
 script = ExtResource("1_itnma")
 
 [node name="ScoreRect" type="ColorRect" parent="." groups=["LevelGroup", "WinGroup"]]

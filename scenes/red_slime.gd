@@ -35,8 +35,22 @@ func _on_timer_timeout() :
 	shoot_projectile()
 	
 func shoot_projectile():
-	print("firing")
 	var projectile = projectile_scene.instantiate()
 	projectile.position = global_position
 	get_parent().add_child(projectile)
 	projectile.direction = Vector2(direction, 0)
+
+
+func _on_ready() -> void:
+	var num_frames := animated_sprite.sprite_frames.get_frame_count("Aggressive Idle")
+	var shoot_frame := 2 #when the slime has a wide open mouth
+	var fps := animated_sprite.sprite_frames.get_animation_speed("Aggressive Idle")
+	var anim_time := num_frames / fps
+	
+	# First shot is out of cycle not all frames
+	var wait_time := anim_time * (shoot_frame + 1) / num_frames # +1 due to zero indexing
+	$Timer.wait_time = wait_time
+	await get_tree().create_timer(wait_time).timeout
+	
+	# Future shots are after every full animation
+	$Timer.wait_time = anim_time
