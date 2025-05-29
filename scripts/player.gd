@@ -21,9 +21,6 @@ var player_control := true:
 		blocking_animation_playing = _player_control
 		player_control = _player_control
 		
-var parry_active =false 
-var parry_timer = Timer.new()
-		
 var last_tap_time_left: float = -1.0
 var last_tap_time_right: float = -1.0
 var refreshable_actions_on_contact: Array[String] = []
@@ -46,15 +43,6 @@ var animation_priority = {
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var audio_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
-
-func _on_ready() -> void:
-	add_child(parry_timer)
-	parry_timer.wait_time = DASHTIME
-	parry_timer.one_shot = true
-	parry_timer.connect("timeout", Callable(self,"_on_parry_timeout"))
-	# the below code is no longer required, since killzones communicate directly to players
-	#for zone in get_tree().get_nodes_in_group("KillZones"):
-		#zone.player_death.connect(on_player_death)
 
 func update_wall_contact() -> void:
 	is_on_wall_left = $RayCastLeft.get_collider() is TileMapLayer
@@ -123,11 +111,10 @@ func dash() -> void:
 		velocity.x = 1 *DASHSPEED
 	else :
 		velocity.x = 0 * DASHSPEED #frontflip
-		parry_active = true #parry
-		parry_timer.start()
-
-func _on_parry_timeout() :
-	parry_active = false
+		# invulnerable to Killzones
+		set_collision_layer_value(4, false)
+		await get_tree().create_timer(DASHTIME).timeout
+		set_collision_layer_value(4, true)
 	
 func _physics_process(delta: float) -> void:
 	move_and_slide()

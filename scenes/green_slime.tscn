@@ -107,8 +107,9 @@ script = ExtResource("1_0pvn7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_e30mu")
-animation = &"Angry"
+animation = &"Aggressive Idle"
 autoplay = "Aggressive Idle"
+frame_progress = 0.0499729
 
 [node name="Killzone" parent="." instance=ExtResource("3_boo2g")]
 collision_layer = 8
