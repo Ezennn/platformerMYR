@@ -92,6 +92,8 @@ func _process(_delta):
 func _on_scene_changed(current_scene) -> void:
 	self.visible = true
 	var player_list = get_tree().get_nodes_in_group("Player")
+	score = 0
+	max_score = 0
 	if len(player_list) != 0:
 		player = player_list [0] as Player
 	if current_scene.has_method("_GameManager_get_game_state"):
