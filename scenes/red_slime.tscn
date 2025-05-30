@@ -1,6 +1,6 @@
 [gd_scene load_steps=20 format=3 uid="uid://bma34f5671vn"]
 
-[ext_resource type="Script" uid="uid://dqq6hgkulk2oa" path="res://scenes/red_slime.gd" id="1_jhcl7"]
+[ext_resource type="Script" uid="uid://dqq6hgkulk2oa" path="res://scripts/red_slime.gd" id="1_jhcl7"]
 [ext_resource type="Texture2D" uid="uid://cibbvghmfg66k" path="res://assets/sprites/slime_purple.png" id="2_dp2bf"]
 [ext_resource type="PackedScene" uid="uid://dnj53nu7bcbhd" path="res://scenes/projectile.tscn" id="2_jhcl7"]
 
