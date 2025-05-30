@@ -1,8 +1,18 @@
 extends Control
 
+func hide_menu() :
+	$ColorRect.hide()
+	$PanelContainer.hide()
+
+func show_menu() :
+	$ColorRect.show()
+	$PanelContainer.show()
+	
 func _ready() :
+	show()
+	$PauseButton.show()
 	$AnimationPlayer.play("RESET")
-	hide()
+	hide_menu()
 	set_process_input(true)  # Make sure input is processed
 	
 func _input(event):
@@ -16,10 +26,10 @@ func resume() :
 	get_tree().paused = false
 	$AnimationPlayer.play_backwards("blur")
 	await $AnimationPlayer.animation_finished
-	hide()
+	hide_menu()
 	
 func pause() :
-	show()
+	show_menu()
 	get_tree().paused = true
 	$AnimationPlayer.play("blur")
 
@@ -27,8 +37,7 @@ func pause() :
 
 func _on_resume_pressed() -> void:
 	resume()
-	hide()
-	
+	hide_menu()
 
 func _on_restart_pressed() -> void:
 	get_tree().paused = false
@@ -46,7 +55,7 @@ func _on_main_menu_pressed() -> void:
 
 
 func _on_pause_button_pressed() -> void:
-	if visible :
+	if $ColorRect.visible :
 		resume()
 	else :
 		pause()

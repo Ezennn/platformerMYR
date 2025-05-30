@@ -59,13 +59,17 @@ func play_animation_for_duration(anim_name: String, duration: float, sprite : An
 	sprite.play(anim_name)
 
 func on_player_death() -> void:
-	refresh_labels(GS.LOSE)
+	game_screen = GS.LOSE
+	refresh_labels(game_screen)
 	play_animation_for_duration("dead", DEATH_TIME)
 	await $ColorRect/AnimatedSprite2D.animation_finished
-	refresh_labels(GS.LEVEL)
+	_reset_score()
+	game_screen = GS.LEVEL
+	refresh_labels(game_screen)
 
 func win(level : int) -> void:
-	refresh_labels(GS.WIN)
+	game_screen = GS.WIN
+	refresh_labels(game_screen)
 	player.player_control = false
 	animated_sprite.position.x -= 122
 	animated_sprite.position.y -= 150
@@ -79,24 +83,30 @@ func inc_max_score() -> void:
 	score_label.text = "Coins: " + str(score) + "/" +str(max_score)
 	
 func _ready():
+	self.visible = true
 	previous_scene = get_tree().current_scene
 	set_process(true)
 	_on_scene_changed(previous_scene)
 
+# must be done before scene changes, so coins can register themselves 
+func _reset_score():
+	score = 0
+	max_score = 0
+	
 func _process(_delta):
 	var current_scene = get_tree().current_scene
 	if current_scene != previous_scene and current_scene != null:
 		previous_scene = current_scene
+		_reset_score()
 		_on_scene_changed(current_scene)
 		
 func _on_scene_changed(current_scene) -> void:
 	self.visible = true
 	var player_list = get_tree().get_nodes_in_group("Player")
-	score = 0
-	max_score = 0
 	if len(player_list) != 0:
 		player = player_list [0] as Player
 	if current_scene.has_method("_GameManager_get_game_state"):
 		refresh_labels(current_scene._GameManager_get_game_state())
 	else:
-		refresh_labels(GS.NA)
+		game_screen = GS.LEVEL
+		refresh_labels(game_screen)

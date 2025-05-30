@@ -1,6 +1,6 @@
 [gd_scene load_steps=20 format=3 uid="uid://bma34f5671vn"]
 
-[ext_resource type="Script" uid="uid://dqq6hgkulk2oa" path="res://scenes/red_slime.gd" id="1_jhcl7"]
+[ext_resource type="Script" uid="uid://dqq6hgkulk2oa" path="res://scripts/red_slime.gd" id="1_jhcl7"]
 [ext_resource type="Texture2D" uid="uid://cibbvghmfg66k" path="res://assets/sprites/slime_purple.png" id="2_dp2bf"]
 [ext_resource type="PackedScene" uid="uid://dnj53nu7bcbhd" path="res://scenes/projectile.tscn" id="2_jhcl7"]
 
@@ -22,6 +22,10 @@ region = Rect2(48, 24, 24, 24)
 [sub_resource type="AtlasTexture" id="AtlasTexture_lb02b"]
 atlas = ExtResource("2_dp2bf")
 region = Rect2(72, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hq7mf"]
+atlas = ExtResource("2_dp2bf")
+region = Rect2(48, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d2e51"]
 atlas = ExtResource("2_dp2bf")
@@ -47,10 +51,6 @@ region = Rect2(0, 0, 24, 24)
 atlas = ExtResource("2_dp2bf")
 region = Rect2(24, 0, 24, 24)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hq7mf"]
-atlas = ExtResource("2_dp2bf")
-region = Rect2(48, 0, 24, 24)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_nlgir"]
 atlas = ExtResource("2_dp2bf")
 region = Rect2(72, 0, 24, 24)
@@ -69,10 +69,13 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_lb02b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hq7mf")
 }],
 "loop": true,
 "name": &"Aggressive Idle",
-"speed": 6.0
+"speed": 2.5
 }, {
 "frames": [{
 "duration": 1.0,
@@ -89,6 +92,20 @@ animations = [{
 }],
 "loop": true,
 "name": &"Angry",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o2mfa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hq7mf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fydep")
+}],
+"loop": false,
+"name": &"Death",
 "speed": 5.0
 }, {
 "frames": [{
@@ -113,9 +130,9 @@ animations = [{
 size = Vector2(8, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4q1e0"]
-size = Vector2(6, 10)
+size = Vector2(10, 10)
 
-[node name="Red Slime" type="StaticBody2D"]
+[node name="Red Slime" type="StaticBody2D" groups=["Enemy"]]
 position = Vector2(0, -5)
 physics_material_override = SubResource("PhysicsMaterial_0pvn7")
 script = ExtResource("1_jhcl7")
@@ -154,7 +171,9 @@ target_position = Vector2(0, 8)
 collision_mask = 5
 
 [node name="Timer" type="Timer" parent="."]
+process_callback = 0
 autostart = true
 
+[connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="body_entered" from="HeadHitbox" to="." method="_on_head_hit"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

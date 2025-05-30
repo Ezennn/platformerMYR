@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://ljtvmhn8b01e"]
+[gd_scene load_steps=20 format=3 uid="uid://ljtvmhn8b01e"]
 
 [ext_resource type="Script" uid="uid://bolknreobe3we" path="res://scripts/green_slime.gd" id="1_0pvn7"]
 [ext_resource type="Texture2D" uid="uid://qb53c0x8oche" path="res://assets/sprites/slime_green.png" id="2_4q1e0"]
@@ -35,6 +35,14 @@ region = Rect2(48, 48, 24, 24)
 [sub_resource type="AtlasTexture" id="AtlasTexture_452or"]
 atlas = ExtResource("2_4q1e0")
 region = Rect2(72, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0pvn7"]
+atlas = ExtResource("2_4q1e0")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4q1e0"]
+atlas = ExtResource("2_4q1e0")
+region = Rect2(0, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ukqwe"]
 atlas = ExtResource("2_4q1e0")
@@ -82,6 +90,20 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_t5vyh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0pvn7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4q1e0")
+}],
+"loop": false,
+"name": &"Death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_ukqwe")
 }, {
 "duration": 1.0,
@@ -109,7 +131,6 @@ script = ExtResource("1_0pvn7")
 sprite_frames = SubResource("SpriteFrames_e30mu")
 animation = &"Aggressive Idle"
 autoplay = "Aggressive Idle"
-frame_progress = 0.0499729
 
 [node name="Killzone" parent="." instance=ExtResource("3_boo2g")]
 collision_layer = 8

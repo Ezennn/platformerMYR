@@ -1,27 +1,22 @@
 extends Area2D
-
-@onready var timer: Timer = $Timer
-
-#signal player_death
 		
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
-		var player := body as Player
-		#player_death.emit()
-		player.on_player_death()
-		GameManager.on_player_death()
-		Engine.time_scale = GameConstants.DEATH_ENGINE_SLOWDOWN
-		timer.wait_time = GameConstants.DEATH_TIME
-		timer.start()
-	elif body.is_in_group("Enemy") or body.is_in_group("Projectile"):
-		body.queue_free()
+		if GameManager.game_screen != GameManager.GS.LOSE:
+			var player := body as Player
+			player.on_player_death()
+			GameManager.on_player_death()
+			_handle_death_timescale()
+	elif body.has_method("on_death") and not body.is_ancestor_of(self):
+		body.on_death()
 	elif body is TileMapLayer:
 		pass
 	else:
 		print("Something unexpected happened: Body entered: " + str(body))
 
-
-func _on_timer_timeout() -> void:
+func _handle_death_timescale() -> void:
+	Engine.time_scale = GameConstants.DEATH_ENGINE_SLOWDOWN
+	await get_tree().create_timer(GameManager.DEATH_TIME).timeout
 	Engine.time_scale = 1
 	get_tree().paused = false
 	get_tree().reload_current_scene()
