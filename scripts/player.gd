@@ -1,14 +1,15 @@
 extends CharacterBody2D
 class_name Player
 
+@export var god_mode : bool = false
 const SPEED = 100.0
 const DASHSPEED = 200.0
 const DASHTIME = 0.3
+const DASH_INVULNERABILITY_TIME = DASHTIME * 2
 const JUMP_VELOCITY = -300.0
 const BOUNCE_VELOCITY = -450.0
 const MAX_FALL_SPEED_WHILE_ON_WALL= 20
 const WALLJUMP_HOR_SPEED = 150.0
-const FALL_THROUGH_TIMER = 0.2  # Duration to disable collision in seconds
 const LADDER_VELOCITY = -80
 
 # Constants for double tap timing (assumed in GameConstants)
@@ -20,7 +21,7 @@ var player_control := true:
 	set(_player_control):
 		blocking_animation_playing = _player_control
 		player_control = _player_control
-		
+
 var last_tap_time_left: float = -1.0
 var last_tap_time_right: float = -1.0
 var refreshable_actions_on_contact: Array[String] = []
@@ -99,7 +100,18 @@ func _on_animation_finished() -> void:
 	if (is_on_floor() or is_on_ladder()) and velocity.x == 0:
 		play_animation_with_priority("idle")
 
+func parry() -> void:
+	var overlapping_areas = $ParryArea2D.get_overlapping_areas()
+	for area in overlapping_areas:
+		if area.is_in_group("Projectile"):
+			var projectile = area
+			if (projectile.position.x > self.global_position.x && projectile.direction.x == -1) or (projectile.position.x < self.global_position.x && projectile.direction.x == 1):
+				projectile.parent = self
+				projectile.direction *= -1
+
 func dash() -> void:
+	# invulnerable to Killzones
+	set_collision_layer_value(4, false)
 	refreshable_actions_on_contact.erase("dash")
 	velocity.y = 0
 	play_animation_for_duration("dash", DASHTIME)
@@ -111,9 +123,11 @@ func dash() -> void:
 		velocity.x = 1 *DASHSPEED
 	else :
 		velocity.x = 0 * DASHSPEED #frontflip
-		# invulnerable to Killzones
-		set_collision_layer_value(4, false)
-		await get_tree().create_timer(DASHTIME).timeout
+		parry()
+	
+	# Disable invulnerability
+	if not god_mode:
+		await get_tree().create_timer(DASH_INVULNERABILITY_TIME).timeout
 		set_collision_layer_value(4, true)
 	
 func _physics_process(delta: float) -> void:
@@ -150,15 +164,16 @@ func _physics_process(delta: float) -> void:
 			audio_player.play()
 	
 	if player_control and Input.is_action_just_pressed("down"):
-		if is_on_floor():
-			set_collision_mask_value(3, false)
-			await get_tree().create_timer(FALL_THROUGH_TIMER).timeout
-			set_collision_mask_value(3, true)
-		elif is_on_ladder():
+		set_collision_mask_value(3, false)
+		var bottom_tile_ladder : bool = $RayCastDown.get_collider() != null and $RayCastDown.get_collider().is_in_group("Ladder")
+		if is_on_floor() and not bottom_tile_ladder:
+			pass
+		elif is_on_ladder() or bottom_tile_ladder:
 			velocity.y = - LADDER_VELOCITY
 		else:
 			velocity.y = 150
-			
+	if !player_control or Input.is_action_just_released("down"):
+		set_collision_mask_value(3, true)
 	if bounce_pending:
 		velocity.y = min(velocity.y, BOUNCE_VELOCITY)
 		bounce_pending = false
@@ -184,6 +199,17 @@ func try_jump() -> bool:
 		return true
 	return false
 
+#func small_ledge_detected(direction : float) -> bool:
+	#for ray_cast in [ray_cast_down, ray_cast_down_short, ray_cast_up]:
+		#ray_cast.target_position.x = 4 * direction
+	#if ray_cast_down.is_colliding() and not ray_cast_up.is_colliding() and not ray_cast_down_short.is_colliding():
+		#print("Collision detected")
+		#print(ray_cast_down.get_collider())
+		#return true
+	#else:
+		#print("Collision not detected")
+		#return false
+	
 func handle_movement() -> void:
 	var direction = Input.get_axis("move_left", "move_right") if player_control else 0.0
 	if jump_x_velocity_override != null:
@@ -194,12 +220,16 @@ func handle_movement() -> void:
 		animated_sprite.flip_h = direction < 0
 		if not((direction>0 && is_on_wall_right) || (direction <0 && is_on_wall_left)):
 			animated_sprite.play("run")
+		#if small_ledge_detected(direction):
+			#position.y -= 4
+		
 	elif is_on_floor() or is_on_ladder():
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		animated_sprite.play("idle")
+		
 
 func is_on_ladder() -> bool:
-	var overlapping_areas = $Area2D.get_overlapping_areas()
+	var overlapping_areas = $LadderArea2D.get_overlapping_areas()
 	for area in overlapping_areas:
 		if area.is_in_group("Ladder"):
 			return true
@@ -220,3 +250,8 @@ func handle_gravity_and_animation(delta: float) -> void:
 	if is_on_wall_left or is_on_wall_right:
 		# upper clamped using jump velocity to deal with wall jumps
 		velocity.y = clamp(velocity.y, JUMP_VELOCITY, MAX_FALL_SPEED_WHILE_ON_WALL)
+
+
+func _on_ready() -> void:
+	if god_mode:
+		set_collision_layer_value(4, false)

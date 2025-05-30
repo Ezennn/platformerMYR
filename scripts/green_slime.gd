@@ -13,11 +13,9 @@ func _on_killzone_body_entered(_body: Node2D) -> void:
 	$HeadHitbox.disconnect("body_entered", Callable(self, "_on_head_hit"))
 	
 func _on_head_hit(body):
-	$Killzone.disconnect("body_entered", Callable(self, "_on_killzone_body_entered"))
-	remove_child($Killzone)
 	if body.has_method("enemy_bounce"):
 		body.enemy_bounce()
-		queue_free()  # destroy enemy
+		on_death()  # destroy enemy
 
 var vel_y : float = 0.0
 func _physics_process(delta: float) -> void:
@@ -33,3 +31,10 @@ func _physics_process(delta: float) -> void:
 	else: 
 		vel_y += delta * (ProjectSettings.get_setting("physics/2d/default_gravity") as float)
 		position.y += vel_y * delta
+
+func on_death() -> void:
+	$HeadHitbox.disconnect("body_entered", Callable(self, "_on_head_hit"))
+	$Killzone.disconnect("body_entered", Callable(self, "_on_killzone_body_entered"))
+	animated_sprite.play("Death")
+	await animated_sprite.animation_finished
+	queue_free()

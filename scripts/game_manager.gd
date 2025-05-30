@@ -59,14 +59,17 @@ func play_animation_for_duration(anim_name: String, duration: float, sprite : An
 	sprite.play(anim_name)
 
 func on_player_death() -> void:
-	refresh_labels(GS.LOSE)
+	game_screen = GS.LOSE
+	refresh_labels(game_screen)
 	play_animation_for_duration("dead", DEATH_TIME)
 	await $ColorRect/AnimatedSprite2D.animation_finished
 	_reset_score()
-	refresh_labels(GS.LEVEL)
+	game_screen = GS.LEVEL
+	refresh_labels(game_screen)
 
 func win(level : int) -> void:
-	refresh_labels(GS.WIN)
+	game_screen = GS.WIN
+	refresh_labels(game_screen)
 	player.player_control = false
 	animated_sprite.position.x -= 122
 	animated_sprite.position.y -= 150
@@ -105,4 +108,5 @@ func _on_scene_changed(current_scene) -> void:
 	if current_scene.has_method("_GameManager_get_game_state"):
 		refresh_labels(current_scene._GameManager_get_game_state())
 	else:
-		refresh_labels(GS.NA)
+		game_screen = GS.LEVEL
+		refresh_labels(game_screen)

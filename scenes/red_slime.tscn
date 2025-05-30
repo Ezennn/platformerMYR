@@ -23,6 +23,10 @@ region = Rect2(48, 24, 24, 24)
 atlas = ExtResource("2_dp2bf")
 region = Rect2(72, 24, 24, 24)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_hq7mf"]
+atlas = ExtResource("2_dp2bf")
+region = Rect2(48, 0, 24, 24)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_d2e51"]
 atlas = ExtResource("2_dp2bf")
 region = Rect2(0, 48, 24, 24)
@@ -47,10 +51,6 @@ region = Rect2(0, 0, 24, 24)
 atlas = ExtResource("2_dp2bf")
 region = Rect2(24, 0, 24, 24)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hq7mf"]
-atlas = ExtResource("2_dp2bf")
-region = Rect2(48, 0, 24, 24)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_nlgir"]
 atlas = ExtResource("2_dp2bf")
 region = Rect2(72, 0, 24, 24)
@@ -69,10 +69,13 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_lb02b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hq7mf")
 }],
 "loop": true,
 "name": &"Aggressive Idle",
-"speed": 6.0
+"speed": 2.5
 }, {
 "frames": [{
 "duration": 1.0,
@@ -89,6 +92,20 @@ animations = [{
 }],
 "loop": true,
 "name": &"Angry",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o2mfa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hq7mf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fydep")
+}],
+"loop": false,
+"name": &"Death",
 "speed": 5.0
 }, {
 "frames": [{
@@ -125,8 +142,6 @@ projectile_scene = ExtResource("2_jhcl7")
 sprite_frames = SubResource("SpriteFrames_e30mu")
 animation = &"Aggressive Idle"
 autoplay = "Aggressive Idle"
-frame = 2
-frame_progress = 0.197706
 
 [node name="RayCastRight" type="RayCast2D" parent="."]
 position = Vector2(0, 5)
@@ -156,6 +171,7 @@ target_position = Vector2(0, 8)
 collision_mask = 5
 
 [node name="Timer" type="Timer" parent="."]
+process_callback = 0
 autostart = true
 
 [connection signal="ready" from="." to="." method="_on_ready"]

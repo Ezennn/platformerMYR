@@ -14,7 +14,7 @@ var direction = 1
 func _on_head_hit(body):
 	if body.has_method("enemy_bounce"):
 		body.enemy_bounce()
-		queue_free()  # destroy enemy
+		on_death()  
 
 var vel_y : float = 0.0
 func _physics_process(delta: float) -> void:
@@ -36,10 +36,12 @@ func _on_timer_timeout() :
 	
 func shoot_projectile():
 	var projectile = projectile_scene.instantiate()
-	projectile.position = global_position
-	get_parent().add_child(projectile)
-	projectile.direction = Vector2(direction, 0)
+	projectile.configure_and_add_to_child(self, global_position, direction, get_parent())
 
+func on_death() -> void:
+	animated_sprite.play("Death")
+	await animated_sprite.animation_finished
+	queue_free()
 
 func _on_ready() -> void:
 	var num_frames := animated_sprite.sprite_frames.get_frame_count("Aggressive Idle")
@@ -47,8 +49,8 @@ func _on_ready() -> void:
 	var fps := animated_sprite.sprite_frames.get_animation_speed("Aggressive Idle")
 	var anim_time := num_frames / fps
 	
-	# First shot is out of cycle not all frames
-	var wait_time := anim_time * (shoot_frame + 1) / num_frames # +1 due to zero indexing
+	# First shot is out of cycle 
+	var wait_time := anim_time * shoot_frame / num_frames # +1 due to zero indexing
 	$Timer.wait_time = wait_time
 	await get_tree().create_timer(wait_time).timeout
 	
