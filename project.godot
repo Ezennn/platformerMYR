@@ -33,6 +33,7 @@ Player=""
 Enemy=""
 Projectile=""
 Ladder=""
+Coin=""
 
 [input]
 

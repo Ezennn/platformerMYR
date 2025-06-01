@@ -10,7 +10,7 @@ var direction = 1
 
 func _on_killzone_body_entered(_body: Node2D) -> void:
 	GameManager.play_animation_for_duration("Angry", GameManager.DEATH_TIME, $AnimatedSprite2D)
-	$HeadHitbox.disconnect("body_entered", Callable(self, "_on_head_hit"))
+	$HeadHitbox.collision_mask = 0
 	
 func _on_head_hit(body):
 	if body.has_method("enemy_bounce"):
@@ -22,9 +22,11 @@ func _physics_process(delta: float) -> void:
 	if ray_cast_right.is_colliding():
 		direction = -1
 		animated_sprite.flip_h = true
+		$Killzone/Killbox.position.x = 3
 	if ray_cast_left.is_colliding():
 		direction = 1
 		animated_sprite.flip_h = false
+		$Killzone/Killbox.position.x = -3
 	position.x += direction * SPEED * delta
 	if ray_cast_down.is_colliding():
 		vel_y = 0
@@ -33,8 +35,8 @@ func _physics_process(delta: float) -> void:
 		position.y += vel_y * delta
 
 func on_death() -> void:
-	$HeadHitbox.disconnect("body_entered", Callable(self, "_on_head_hit"))
-	$Killzone.disconnect("body_entered", Callable(self, "_on_killzone_body_entered"))
+	$HeadHitbox.collision_mask = 0
+	$Killzone.collision_mask = 0
 	animated_sprite.play("Death")
 	await animated_sprite.animation_finished
 	queue_free()

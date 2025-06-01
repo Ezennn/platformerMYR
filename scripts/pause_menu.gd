@@ -47,6 +47,7 @@ func _on_restart_pressed() -> void:
 
 
 func _on_main_menu_pressed() -> void:
+	hide_menu()
 	GameManager.refresh_labels(GameManager.GS.LEVEL_SELECT)
 	get_tree().paused = false
 	Engine.time_scale = 1

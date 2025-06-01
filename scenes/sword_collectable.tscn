@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://b502rh18d774q"]
+
+[ext_resource type="Texture2D" uid="uid://cvdysr1wax72g" path="res://assets/sprites/8bit sword.png" id="1_nsoq7"]
+[ext_resource type="Script" uid="uid://csdwl543u3v3i" path="res://scripts/collectible.gd" id="1_ohye5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ohye5"]
+size = Vector2(8, 16)
+
+[node name="sword_collectable" type="Area2D"]
+script = ExtResource("1_ohye5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ohye5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.0533333, 0.0533333)
+texture = ExtResource("1_nsoq7")

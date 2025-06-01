@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://uv5cdmohgonf"]
+[gd_scene load_steps=49 format=3 uid="uid://uv5cdmohgonf"]
 
 [ext_resource type="Script" uid="uid://bse1jlaj2rxju" path="res://scripts/game_manager.gd" id="1_itnma"]
 [ext_resource type="FontFile" uid="uid://cbt5xvtsjjscv" path="res://assets/fonts/PixelOperator8.ttf" id="2_6nuav"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://bnpcvdejvocva" path="res://scenes/quit_button.tscn" id="6_q8mjp"]
 [ext_resource type="PackedScene" uid="uid://5dm8m5rvtcnp" path="res://scenes/level_select_button.tscn" id="7_q8mjp"]
 [ext_resource type="AudioStream" uid="uid://8cw2fafkka61" path="res://assets/sounds/win.mp3" id="8_jdad8"]
+[ext_resource type="AudioStream" uid="uid://qm1etevvbb5f" path="res://assets/sounds/collectible_pickup.mp3" id="9_k4jhu"]
+[ext_resource type="PackedScene" uid="uid://cf52cbj4eam28" path="res://scenes/pause_menu.tscn" id="10_frtjd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4r5pv"]
 atlas = ExtResource("3_6nuav")
@@ -303,7 +305,6 @@ animations = [{
 
 [node name="GameManager" type="CanvasLayer"]
 layer = 2
-visible = false
 script = ExtResource("1_itnma")
 
 [node name="ScoreRect" type="ColorRect" parent="." groups=["LevelGroup", "WinGroup"]]
@@ -405,5 +406,45 @@ scale = Vector2(0.26, 0.26)
 stream = ExtResource("8_jdad8")
 volume_db = -8.0
 bus = &"SFX"
+
+[node name="CollectiblePickupSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_k4jhu")
+
+[node name="PauseMenu" type="CanvasLayer" parent="." groups=["LevelGroup"]]
+
+[node name="Pause_Menu" parent="PauseMenu" instance=ExtResource("10_frtjd")]
+
+[node name="WinRequirementsTextBox" type="CanvasLayer" parent="." groups=["DeadGroup", "LevelGroup"]]
+layer = 0
+
+[node name="WinRequirementsTextBox" type="MarginContainer" parent="WinRequirementsTextBox"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -300.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="ColorRect" type="ColorRect" parent="WinRequirementsTextBox/WinRequirementsTextBox"]
+layout_mode = 2
+color = Color(0.329412, 0.329412, 0.329412, 0.784314)
+
+[node name="MarginContainer" type="MarginContainer" parent="WinRequirementsTextBox/WinRequirementsTextBox"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="WinRequirementsTextBox/WinRequirementsTextBox/MarginContainer"]
+z_index = 5
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("2_6nuav")
+text = "Requirements:"
+vertical_alignment = 1
+autowrap_mode = 2
 
 [connection signal="ready" from="." to="." method="_on_ready"]
