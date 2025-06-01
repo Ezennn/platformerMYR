@@ -13,6 +13,7 @@ func  _process(delta : float) -> void:
 func _on_body_entered(body : Node2D) -> void:
 	if (body == null): 
 		return
+
 	if parent.is_ancestor_of(body) or parent == body:
 		return
 	
