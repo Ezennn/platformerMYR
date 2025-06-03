@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://bwd0pij2hcmkg" path="res://scenes/right_arrow_sprite.tscn" id="12_xq5uh"]
 [ext_resource type="PackedScene" uid="uid://c2hit07jbcp6w" path="res://scenes/platform.tscn" id="13_qbiht"]
 [ext_resource type="PackedScene" uid="uid://cf52cbj4eam28" path="res://scenes/pause_menu.tscn" id="14_1mx6y"]
-[ext_resource type="Texture2D" uid="uid://0urp6fdlsafk" path="res://assets/Screens/imageedit_2_4695843659.png" id="15_umt2k"]
+[ext_resource type="Texture2D" uid="uid://0urp6fdlsafk" path="res://assets/screens/imageedit_2_4695843659.png" id="15_umt2k"]
 [ext_resource type="PackedScene" uid="uid://d11i11xfv5sgw" path="res://scenes/killzone.tscn" id="16_pvcau"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lnu2h"]
@@ -54,19 +54,14 @@ texture = ExtResource("3_jrpq1")
 4:1/0 = 0
 4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 5:1/0 = 0
-5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 6:1/0 = 0
 6:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 7:1/0 = 0
 7:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 8:1/0 = 0
-8:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 9:1/0 = 0
-9:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -5.75548, 8, -0.179857, -8, -2.1583)
 10:1/0 = 0
-10:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -5.78887, 8, -5.74468, 8, 0, -8, -0.17676)
 11:1/0 = 0
-11:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -5.75548, 8, -8, 8, -1.61873, -8, 0)
 0:2/0 = 0
 0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:2/0 = 0
@@ -78,13 +73,11 @@ texture = ExtResource("3_jrpq1")
 4:2/0 = 0
 4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 5:2/0 = 0
-5:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 6:2/0 = 0
 6:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 7:2/0 = 0
 7:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 8:2/0 = 0
-8:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 9:2/0 = 0
 9:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -5.75548, 8, -0.179857, -8, -2.1583)
 10:2/0 = 0
@@ -119,6 +112,7 @@ texture = ExtResource("3_jrpq1")
 5:6/0 = 0
 6:6/0 = 0
 7:6/0 = 0
+7:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 8:6/0 = 0
 0:7/0 = 0
 1:7/0 = 0
@@ -204,6 +198,7 @@ distance = -48.0
 
 [node name="Level 2" type="Node2D"]
 script = ExtResource("1_dgqd4")
+level = 2
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("2_1yeso")]
 position = Vector2(1192, -8)
@@ -272,8 +267,4 @@ position = Vector2(5, 139)
 position = Vector2(-5, 133)
 shape = SubResource("WorldBoundaryShape2D_p57ef")
 
-[connection signal="ready" from="TileMap/Midground/Red Slime" to="TileMap/Midground/Red Slime" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@22537" to="TileMap/Midground/@StaticBody2D@22537" method="_on_ready"]
-[connection signal="body_entered" from="TileMap/Midground/Crown" to="TileMap/Midground/Crown" method="_on_body_entered"]
-[connection signal="win" from="TileMap/Midground/Crown" to="TileMap/Midground/Crown" method="_on_win"]
 [connection signal="pressed" from="PauseMenu/PauseButton" to="PauseMenu/Pause_Menu" method="_on_pause_button_pressed"]

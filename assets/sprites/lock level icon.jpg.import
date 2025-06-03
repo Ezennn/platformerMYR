@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://mg0ls1bgn08t"
-path="res://.godot/imported/Fire Effect and Bullet 16x16.png-11a0bccb7d9cee40c504810ffbd3d5fb.ctex"
+uid="uid://du14k835ax1cw"
+path="res://.godot/imported/lock level icon.jpg-636175de2142f41a157e14641e5dae31.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/effects/Fire Effect and Bullet 16x16.png"
-dest_files=["res://.godot/imported/Fire Effect and Bullet 16x16.png-11a0bccb7d9cee40c504810ffbd3d5fb.ctex"]
+source_file="res://assets/sprites/lock level icon.jpg"
+dest_files=["res://.godot/imported/lock level icon.jpg-636175de2142f41a157e14641e5dae31.ctex"]
 
 [params]
 
