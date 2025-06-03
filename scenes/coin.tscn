@@ -173,7 +173,7 @@ _data = {
 &"pickupAnimation": SubResource("Animation_d14el")
 }
 
-[node name="Coin" type="Area2D"]
+[node name="Coin" type="Area2D" groups=["Coin"]]
 collision_mask = 2
 script = ExtResource("1_i64fm")
 
@@ -186,12 +186,12 @@ frame_progress = 0.726301
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ssuvv")
 
-[node name="Pickup Sound" type="AudioStreamPlayer2D" parent="."]
+[node name="Coin Pickup Sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_11l1o")
 bus = &"SFX"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-root_node = NodePath("../Pickup Sound")
+root_node = NodePath("../Coin Pickup Sound")
 libraries = {
 &"": SubResource("AnimationLibrary_wnlwo")
 }

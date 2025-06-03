@@ -13,8 +13,7 @@ func  _process(delta : float) -> void:
 func _on_body_entered(body : Node2D) -> void:
 	if (body == null): 
 		return
-
-	if parent.is_ancestor_of(body) or parent == body:
+	if parent.is_inside_tree() and (parent.is_ancestor_of(body) or parent == body):
 		return
 	
 	# killzone does not play well with moving StaticBody2D. Manually implement slime death here
@@ -35,6 +34,8 @@ func configure_and_add_to_child(projectile_caster : Node2D, _position : Vector2,
 	node_parent.add_child(self)
 	
 func _ready() :
+	# remove the following line if you want projectiles to interact with the world and not just the player
+	collision_mask = 4
 	$AnimatedSprite2D.play("start")
 	$Timer.start()
 	body_entered.connect(_on_body_entered)

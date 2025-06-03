@@ -1,11 +1,7 @@
 extends Node2D
 
-func _GameManager_get_game_state() :
-	return GameManager.GS.LEVEL
-#Let worldboundary = 470 be a easter egg for a later level 
-#@export var world_bottom_bound : float = 470.0
-
-
+@export var game_state : GameManager.GS = GameManager.GS.LEVEL
+@export var level : int = 1
 @export var world_bottom_bound : float = 133.0
 
 # Called when the node enters the scene tree for the first time.

@@ -25,22 +25,36 @@ texture = ExtResource("2_ge2pc")
 region_enabled = true
 region_rect = Rect2(129, 50, 14, 14)
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -90.0
-offset_top = -115.0
-offset_right = 85.0
-offset_bottom = -55.0
-size_flags_vertical = 8
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -75.0
+offset_top = -90.0
+offset_right = 75.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer"]
+layout_mode = 2
 color = Color(0.329412, 0.329412, 0.329412, 0.784314)
 
-[node name="Label" type="Label" parent="ColorRect"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="MarginContainer/MarginContainer"]
 z_index = 5
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("3_qkam6")
 text = "hello"
 horizontal_alignment = 1

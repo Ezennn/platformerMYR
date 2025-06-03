@@ -47,7 +47,8 @@ func _on_restart_pressed() -> void:
 
 
 func _on_main_menu_pressed() -> void:
-	GameManager.refresh_labels(GameManager.GS.LEVEL_SELECT)
+	hide_menu()
+	GameManager.apply_game_state(GameManager.GS.LEVEL_SELECT)
 	get_tree().paused = false
 	Engine.time_scale = 1
 	get_tree().change_scene_to_file("res://scenes/menu.tscn")
