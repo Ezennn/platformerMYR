@@ -40,3 +40,8 @@ func on_death() -> void:
 	animated_sprite.play("Death")
 	await animated_sprite.animation_finished
 	queue_free()
+
+# Programmed connections rather than editor connections to avoid being in a tilemaplayer to regenerate connections with different IDs
+func _on_ready() -> void:
+	$Killzone.connect("body_entered", _on_killzone_body_entered)
+	$HeadHitbox.connect("body_entered", _on_head_hit)
