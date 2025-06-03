@@ -41,6 +41,8 @@ func _ready() :
 	body_entered.connect(_on_body_entered)
 	
 func _on_timer_timeout() :
+	self.collision_mask = 0
+	$Killzone.collision_mask = 0
 	$AnimatedSprite2D.play("onhit")
 	speed = 0
 	await $AnimatedSprite2D.animation_finished

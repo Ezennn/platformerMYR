@@ -63,6 +63,7 @@ offset_left = 478.0
 offset_top = 132.0
 offset_right = 1908.0
 offset_bottom = 1381.0
+level = 2
 
 [node name="Label" parent="Level2" index="0"]
 text = "Level 2"
@@ -73,6 +74,7 @@ offset_left = 854.0
 offset_top = 137.0
 offset_right = 2284.0
 offset_bottom = 1386.0
+level = 3
 
 [node name="Label" parent="Level3" index="0"]
 text = "Level 3"
@@ -83,6 +85,7 @@ offset_left = 275.0
 offset_top = 390.0
 offset_right = 1705.0
 offset_bottom = 1639.0
+level = 4
 
 [node name="Label" parent="Level4" index="0"]
 text = "Level 4"
@@ -93,6 +96,7 @@ offset_left = 693.0
 offset_top = 393.0
 offset_right = 2123.0
 offset_bottom = 1642.0
+level = 5
 
 [node name="Label" parent="Level5" index="0"]
 text = "Level 5"

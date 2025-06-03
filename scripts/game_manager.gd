@@ -57,6 +57,7 @@ const _DEFAULT_REQ_PREFIX := "Requirements:\n"
 func _ready() -> void:
 	self.visible = true
 	set_process(true)
+	load_progress()
 	_on_scene_changed(get_tree().current_scene)
 
 func _process(_delta: float) -> void:
@@ -201,10 +202,9 @@ func on_player_death() -> void:
 	apply_game_state(GS.LEVEL)
 
 func _play_death_animation() -> void:
-	_set_animation("dead", DEATH_TIME)
-	await get_tree().create_timer(DEATH_TIME).timeout
+	play_animation_for_duration("dead", DEATH_TIME)
 
-func _set_animation(anim_name: String, duration: float, sprite: AnimatedSprite2D = _animated_sprite) -> void:
+func play_animation_for_duration(anim_name: String, duration: float, sprite: AnimatedSprite2D = _animated_sprite) -> void:
 	var frames := sprite.sprite_frames
 	if not frames.has_animation(anim_name):
 		push_error("Animation '%s' not found!" % anim_name)
@@ -243,7 +243,33 @@ func _clear_collectibles() -> void:
 
 func _handle_death_timescale() -> void:
 	Engine.time_scale = GameConstants.DEATH_ENGINE_SLOWDOWN
-	await get_tree().create_timer(GameConstants.DEATH_TIME).timeout
+	await get_tree().create_timer(DEATH_TIME).timeout
 	Engine.time_scale = 1
 	get_tree().paused = false
 	get_tree().reload_current_scene()
+
+
+# ---------------------------------------
+# SAVES
+# ---------------------------------------
+const SAVE_PATH := "res://saves/"
+func save_progress():
+	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
+	var data := {
+		"unlocked_up_to_level": unlocked_up_to_level
+	}
+	file.store_string(JSON.stringify(data))
+	file.close()
+	
+func load_progress():
+	if FileAccess.file_exists(SAVE_PATH):
+		var file = FileAccess.open(SAVE_PATH, FileAccess.READ)
+		var content := file.get_as_text()
+		var result = JSON.parse_string(content)
+		if typeof(result) == TYPE_DICTIONARY and result.has("unlocked_up_to_level"):
+			unlocked_up_to_level = result["unlocked_up_to_level"]
+		file.close()
+
+func quit():
+	save_progress()
+	get_tree().quit()

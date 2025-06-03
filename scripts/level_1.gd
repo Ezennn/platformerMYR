@@ -2,7 +2,7 @@ extends Node2D
 
 @export var game_state : GameManager.GS = GameManager.GS.LEVEL
 @export var level : int = 1
-@export var world_bottom_bound : float = 133.0
+@export var world_bottom_bound : float = 253.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
