@@ -61,3 +61,5 @@ color = Color(0.588235, 0.588235, 0.588235, 0.470588)
 position = Vector2(660, 480)
 scale = Vector2(5.9375, 5.9375)
 texture = ExtResource("2_dmma5")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

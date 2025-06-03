@@ -14,6 +14,7 @@ const GS := GAME_SCREEN_STATE
 # EXPORTED PROPERTIES
 # ---------------------------------------
 
+@export var reset_saves: bool = false
 @export var unlocked_up_to_level: int = 1
 @export var game_screen: GAME_SCREEN_STATE = GS.LEVEL
 
@@ -103,6 +104,7 @@ func apply_game_state(state: GAME_SCREEN_STATE= GS.NA) -> void:
 		GS.LOSE:
 			_show_group("DeadGroup")
 		GS.WIN:
+			player.death_disable()
 			_show_group("WinGroup")
 		_: 
 			pass  # For LEVEL_SELECT, NA, etc. no immediate UI changes
@@ -252,9 +254,15 @@ func _handle_death_timescale() -> void:
 # ---------------------------------------
 # SAVES
 # ---------------------------------------
-const SAVE_PATH := "res://saves/"
+const SAVE_PATH := "user://save_data.save"
+
 func save_progress():
+	if reset_saves:
+		unlocked_up_to_level = 1
 	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
+	if file == null:
+		print(FileAccess.get_open_error())
+		return
 	var data := {
 		"unlocked_up_to_level": unlocked_up_to_level
 	}
@@ -268,6 +276,8 @@ func load_progress():
 		var result = JSON.parse_string(content)
 		if typeof(result) == TYPE_DICTIONARY and result.has("unlocked_up_to_level"):
 			unlocked_up_to_level = result["unlocked_up_to_level"]
+		if reset_saves:
+			unlocked_up_to_level = 1
 		file.close()
 
 func quit():
