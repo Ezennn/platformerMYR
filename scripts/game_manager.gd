@@ -83,8 +83,8 @@ func _on_scene_changed(current_scene: Node) -> void:
 	if "game_state" in current_scene:
 		apply_game_state(current_scene.game_state)
 	else:
-		push_warning("Scene %s has no 'game_state'; defaulting to LEVEL." % current_scene.name)
-		apply_game_state(GS.LEVEL)
+		push_warning("Scene %s has no 'game_state'; defaulting to NA." % current_scene.name)
+		apply_game_state(GS.NA)
 
 # ---------------------------------------
 # GAME STATE & UI REFRESH
@@ -165,11 +165,11 @@ func _play_collect_sound() -> void:
 func _update_requirements() -> void:
 	var text := _DEFAULT_REQ_PREFIX
 	for item in _items_to_collect:
-		var name : String = COLLECTIBLE.keys()[item].capitalize()
+		var _name : String = COLLECTIBLE.keys()[item].capitalize()
 		if item in _collected_items:
-			text += "%s: Done\n" % name
+			text += "%s: Done\n" % _name
 		else:
-			text += "%s: Pending\n" % name
+			text += "%s: Pending\n" % _name
 	_win_requirements_label.text = text
 
 # Check if all registered items have been collected
