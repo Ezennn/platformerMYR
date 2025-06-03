@@ -111,7 +111,7 @@ func parry() -> void:
 
 func dash() -> void:
 	# invulnerable to Killzones
-	set_collision_layer_value(4, false)
+	death_disable()
 	refreshable_actions_on_contact.erase("dash")
 	velocity.y = 0
 	play_animation_for_duration("dash", DASHTIME)
@@ -251,7 +251,12 @@ func handle_gravity_and_animation(delta: float) -> void:
 		# upper clamped using jump velocity to deal with wall jumps
 		velocity.y = clamp(velocity.y, JUMP_VELOCITY, MAX_FALL_SPEED_WHILE_ON_WALL)
 
+func death_disable() -> void:
+	set_collision_layer_value(4, false)
 
+func death_enable() -> void:
+	set_collision_layer_value(4, true)
+	
 func _on_ready() -> void:
 	if god_mode:
-		set_collision_layer_value(4, false)
+		death_disable()
