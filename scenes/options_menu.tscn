@@ -17,7 +17,7 @@ script = ExtResource("1_ijpji")
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
 offset_right = 1152.0
-offset_bottom = 645.0
+offset_bottom = 652.0
 texture = ExtResource("2_lfjc7")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]

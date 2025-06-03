@@ -11,6 +11,6 @@ func _ready():
 	self.body_entered.connect(_on_body_entered)
 	GameManager.register_collectible(collectible_type)
 
-func _on_body_entered(body):
+func _on_body_entered(_body):
 	GameManager.collect_item(collectible_type)
 	queue_free()  # remove collectible after pickup
