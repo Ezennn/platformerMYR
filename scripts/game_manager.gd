@@ -79,19 +79,16 @@ func _on_scene_changed(current_scene: Node) -> void:
 		player = players[0] as Player
 
 	if "game_state" in current_scene:
-		_apply_game_state(current_scene.game_state)
+		apply_game_state(current_scene.game_state)
 	else:
 		push_warning("Scene %s has no 'game_state'; defaulting to LEVEL." % current_scene.name)
-		_apply_game_state(GS.LEVEL)
+		apply_game_state(GS.LEVEL)
 
 # ---------------------------------------
 # GAME STATE & UI REFRESH
 # ---------------------------------------
 
-func refresh_labels(new_state: GAME_SCREEN_STATE = GS.NA) -> void:
-	_apply_game_state(new_state)
-
-func _apply_game_state(state: GAME_SCREEN_STATE) -> void:
+func apply_game_state(state: GAME_SCREEN_STATE= GS.NA) -> void:
 	game_screen = state
 	_hide_all_groups()
 	match state:
@@ -196,12 +193,12 @@ func _items_match(a: Array, b: Array) -> bool:
 # ---------------------------------------
 
 func on_player_death() -> void:
-	_apply_game_state(GS.LOSE)
+	apply_game_state(GS.LOSE)
 	_play_death_animation()
 	await _animated_sprite.animation_finished
 	score = 0
 	_clear_collectibles()
-	_apply_game_state(GS.LEVEL)
+	apply_game_state(GS.LEVEL)
 
 func _play_death_animation() -> void:
 	_set_animation("dead", DEATH_TIME)
@@ -221,7 +218,7 @@ func _set_animation(anim_name: String, duration: float, sprite: AnimatedSprite2D
 	sprite.play(anim_name)
 
 func _on_level_win(current_level: int) -> void:
-	_apply_game_state(GS.WIN)
+	apply_game_state(GS.WIN)
 	if player:
 		player.player_control = false
 	# Shift the sprite upwards/leftwards for a “victory stance”
@@ -250,9 +247,3 @@ func _handle_death_timescale() -> void:
 	Engine.time_scale = 1
 	get_tree().paused = false
 	get_tree().reload_current_scene()
-
-# ---------------------------------------
-# UTILITY
-# ---------------------------------------
-
-# (You can add any extra helpers below if needed…)
