@@ -259,4 +259,7 @@ func death_enable() -> void:
 	
 func _on_ready() -> void:
 	if god_mode:
+		print("God mode is ON in the level %i screen. Disable God Mode in the scene Player Inspector to enable deaths".format(GameManager.level))
 		death_disable()
+	else:
+		death_enable()
