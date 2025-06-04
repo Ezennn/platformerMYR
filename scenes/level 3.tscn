@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://bqy12mbys30x1"]
+[gd_scene load_steps=22 format=4 uid="uid://lji6utb34y2y"]
 
 [ext_resource type="Script" uid="uid://bhlhnq6lh8vwv" path="res://scripts/level_1.gd" id="1_pbsnm"]
 [ext_resource type="PackedScene" uid="uid://bgkdqjyiatvx5" path="res://scenes/player.tscn" id="2_xfy3g"]
@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://bwd0pij2hcmkg" path="res://scenes/right_arrow_sprite.tscn" id="12_s0dx1"]
 [ext_resource type="PackedScene" uid="uid://c2hit07jbcp6w" path="res://scenes/platform.tscn" id="13_5hpc3"]
 [ext_resource type="PackedScene" uid="uid://cf52cbj4eam28" path="res://scenes/pause_menu.tscn" id="14_njmyb"]
-[ext_resource type="Texture2D" uid="uid://0urp6fdlsafk" path="res://assets/Screens/imageedit_2_4695843659.png" id="15_udutw"]
+[ext_resource type="Texture2D" uid="uid://0urp6fdlsafk" path="res://assets/screens/imageedit_2_4695843659.png" id="15_udutw"]
 [ext_resource type="PackedScene" uid="uid://d11i11xfv5sgw" path="res://scenes/killzone.tscn" id="16_4fl4y"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lnu2h"]

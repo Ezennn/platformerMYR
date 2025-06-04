@@ -14,6 +14,7 @@ const GS := GAME_SCREEN_STATE
 # EXPORTED PROPERTIES
 # ---------------------------------------
 
+@export var reset_saves: bool = false
 @export var unlocked_up_to_level: int = 1
 @export var game_screen: GAME_SCREEN_STATE = GS.LEVEL
 
@@ -82,8 +83,8 @@ func _on_scene_changed(current_scene: Node) -> void:
 	if "game_state" in current_scene:
 		apply_game_state(current_scene.game_state)
 	else:
-		push_warning("Scene %s has no 'game_state'; defaulting to LEVEL." % current_scene.name)
-		apply_game_state(GS.LEVEL)
+		push_warning("Scene %s has no 'game_state'; defaulting to NA." % current_scene.name)
+		apply_game_state(GS.NA)
 
 # ---------------------------------------
 # GAME STATE & UI REFRESH
@@ -103,6 +104,7 @@ func apply_game_state(state: GAME_SCREEN_STATE= GS.NA) -> void:
 		GS.LOSE:
 			_show_group("DeadGroup")
 		GS.WIN:
+			player.death_disable()
 			_show_group("WinGroup")
 		_: 
 			pass  # For LEVEL_SELECT, NA, etc. no immediate UI changes
@@ -163,11 +165,11 @@ func _play_collect_sound() -> void:
 func _update_requirements() -> void:
 	var text := _DEFAULT_REQ_PREFIX
 	for item in _items_to_collect:
-		var name : String = COLLECTIBLE.keys()[item].capitalize()
+		var _name : String = COLLECTIBLE.keys()[item].capitalize()
 		if item in _collected_items:
-			text += "%s: Done\n" % name
+			text += "%s: Done\n" % _name
 		else:
-			text += "%s: Pending\n" % name
+			text += "%s: Pending\n" % _name
 	_win_requirements_label.text = text
 
 # Check if all registered items have been collected
@@ -252,9 +254,15 @@ func _handle_death_timescale() -> void:
 # ---------------------------------------
 # SAVES
 # ---------------------------------------
-const SAVE_PATH := "res://saves/"
+const SAVE_PATH := "user://save_data.save"
+
 func save_progress():
+	if reset_saves:
+		unlocked_up_to_level = 1
 	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
+	if file == null:
+		print(FileAccess.get_open_error())
+		return
 	var data := {
 		"unlocked_up_to_level": unlocked_up_to_level
 	}
@@ -268,6 +276,8 @@ func load_progress():
 		var result = JSON.parse_string(content)
 		if typeof(result) == TYPE_DICTIONARY and result.has("unlocked_up_to_level"):
 			unlocked_up_to_level = result["unlocked_up_to_level"]
+		if reset_saves:
+			unlocked_up_to_level = 1
 		file.close()
 
 func quit():

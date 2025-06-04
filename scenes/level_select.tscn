@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cun3lygolenju"]
+[gd_scene load_steps=13 format=3 uid="uid://cun3lygolenju"]
 
 [ext_resource type="Texture2D" uid="uid://cos7ah2l5cyxe" path="res://assets/screens/background_pixelart.jpg" id="1_2epne"]
 [ext_resource type="Script" uid="uid://ducl7fs0l0df" path="res://scripts/level_select.gd" id="1_r77uv"]
@@ -6,6 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://bnpcvdejvocva" path="res://scenes/quit_button.tscn" id="4_r77uv"]
 [ext_resource type="PackedScene" uid="uid://clr6kwflr7th0" path="res://scenes/options_button.tscn" id="5_4nqmc"]
 [ext_resource type="PackedScene" uid="uid://ca3toq7ppqgoh" path="res://scenes/level_choice_button.tscn" id="6_r77uv"]
+[ext_resource type="PackedScene" uid="uid://bofabqvdodi8y" path="res://scenes/level 1.tscn" id="7_htctk"]
+[ext_resource type="PackedScene" uid="uid://vniuwukl7bfc" path="res://scenes/level 2.tscn" id="8_s6tf7"]
+[ext_resource type="PackedScene" uid="uid://lji6utb34y2y" path="res://scenes/level 3.tscn" id="9_u4mbh"]
+[ext_resource type="PackedScene" uid="uid://cchxt1752egyk" path="res://scenes/level 4.tscn" id="10_rovvv"]
+[ext_resource type="PackedScene" uid="uid://biuqxn0nveof5" path="res://scenes/level 5.tscn" id="11_0wyvj"]
 
 [sub_resource type="Theme" id="Theme_r77uv"]
 default_font = ExtResource("3_chg43")
@@ -56,6 +61,7 @@ offset_left = 96.0
 offset_top = 135.0
 offset_right = 1526.0
 offset_bottom = 1384.0
+level_scene = ExtResource("7_htctk")
 
 [node name="Level2" parent="." instance=ExtResource("6_r77uv")]
 layout_mode = 0
@@ -64,6 +70,7 @@ offset_top = 132.0
 offset_right = 1908.0
 offset_bottom = 1381.0
 level = 2
+level_scene = ExtResource("8_s6tf7")
 
 [node name="Label" parent="Level2" index="0"]
 text = "Level 2"
@@ -75,6 +82,7 @@ offset_top = 137.0
 offset_right = 2284.0
 offset_bottom = 1386.0
 level = 3
+level_scene = ExtResource("9_u4mbh")
 
 [node name="Label" parent="Level3" index="0"]
 text = "Level 3"
@@ -86,6 +94,7 @@ offset_top = 390.0
 offset_right = 1705.0
 offset_bottom = 1639.0
 level = 4
+level_scene = ExtResource("10_rovvv")
 
 [node name="Label" parent="Level4" index="0"]
 text = "Level 4"
@@ -97,6 +106,7 @@ offset_top = 393.0
 offset_right = 2123.0
 offset_bottom = 1642.0
 level = 5
+level_scene = ExtResource("11_0wyvj")
 
 [node name="Label" parent="Level5" index="0"]
 text = "Level 5"

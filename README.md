@@ -8,9 +8,13 @@
 
 
 ## Tech stack
-- GoDot - FrontEnd
-- PostGres - Database
-- Django - BackEnd Supplementary
+
+GoDOt - application
+itch.io - deployment
+
+## Lore (story progression)
+
+
 
   # TO DO
   save method after make level 2

@@ -43,7 +43,10 @@ func on_death() -> void:
 	await animated_sprite.animation_finished
 	queue_free()
 
+# Programmed connections rather than editor connections to avoid being in a tilemaplayer to regenerate connections with different IDs
 func _on_ready() -> void:
+	$HeadHitbox.connect("body_entered", _on_head_hit)
+	$Timer.connect("timeout", _on_timer_timeout)
 	var num_frames := animated_sprite.sprite_frames.get_frame_count("Aggressive Idle")
 	var shoot_frame := 2 #when the slime has a wide open mouth
 	var fps := animated_sprite.sprite_frames.get_animation_speed("Aggressive Idle")
