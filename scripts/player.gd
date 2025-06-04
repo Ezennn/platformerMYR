@@ -260,3 +260,5 @@ func death_enable() -> void:
 func _on_ready() -> void:
 	if god_mode:
 		death_disable()
+	else:
+		death_enable()

@@ -257,27 +257,28 @@ func _handle_death_timescale() -> void:
 const SAVE_PATH := "user://save_data.save"
 
 func save_progress():
-	if reset_saves:
-		unlocked_up_to_level = 1
 	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
 	if file == null:
 		print(FileAccess.get_open_error())
 		return
-	var data := {
-		"unlocked_up_to_level": unlocked_up_to_level
-	}
+	var data : Dictionary
+	if reset_saves:
+		data = {}
+	else:
+		data = {
+			"unlocked_up_to_level": unlocked_up_to_level
+		}
+		
 	file.store_string(JSON.stringify(data))
 	file.close()
 	
 func load_progress():
-	if FileAccess.file_exists(SAVE_PATH):
+	if FileAccess.file_exists(SAVE_PATH) and not reset_saves:
 		var file = FileAccess.open(SAVE_PATH, FileAccess.READ)
 		var content := file.get_as_text()
 		var result = JSON.parse_string(content)
 		if typeof(result) == TYPE_DICTIONARY and result.has("unlocked_up_to_level"):
 			unlocked_up_to_level = result["unlocked_up_to_level"]
-		if reset_saves:
-			unlocked_up_to_level = 1
 		file.close()
 
 func quit():
