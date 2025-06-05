@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="First Godot Platformer"
-run/main_scene="uid://bofabqvdodi8y"
+run/main_scene="uid://csocvidqyetob"
 config/features=PackedStringArray("4.4", "Forward Plus")
 
 [autoload]
