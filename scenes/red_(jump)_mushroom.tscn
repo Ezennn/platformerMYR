@@ -5,7 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://b20e4x0jib4hu" path="res://assets/sounds/mushroom_bounce.mp3" id="3_abj43"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_abj43"]
-size = Vector2(12, 16.5)
+size = Vector2(16, 16.5)
 
 [node name="Red (Jump) Mushroom" type="StaticBody2D"]
 visibility_layer = 2

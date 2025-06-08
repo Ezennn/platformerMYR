@@ -192,7 +192,7 @@ sources/1 = SubResource("TileSetScenesCollectionSource_hc45n")
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_p57ef"]
 distance = -48.0
 
-[node name="Level 2" type="Node2D"]
+[node name="Level 3" type="Node2D"]
 script = ExtResource("1_pbsnm")
 level = 2
 
@@ -327,93 +327,26 @@ position = Vector2(5, 139)
 position = Vector2(-5, 133)
 shape = SubResource("WorldBoundaryShape2D_p57ef")
 
-[connection signal="ready" from="TileMap/Midground/Green Slime" to="TileMap/Midground/Green Slime" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/Red Slime" to="TileMap/Midground/Red Slime" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@49619" to="TileMap/Midground/@StaticBody2D@49619" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@49761" to="TileMap/Midground/@StaticBody2D@49761" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@49762" to="TileMap/Midground/@StaticBody2D@49762" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@49763" to="TileMap/Midground/@StaticBody2D@49763" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@49764" to="TileMap/Midground/@StaticBody2D@49764" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@49765" to="TileMap/Midground/@StaticBody2D@49765" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@49766" to="TileMap/Midground/@StaticBody2D@49766" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@49767" to="TileMap/Midground/@StaticBody2D@49767" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@49768" to="TileMap/Midground/@StaticBody2D@49768" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50016" to="TileMap/Midground/@StaticBody2D@50016" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50017" to="TileMap/Midground/@StaticBody2D@50017" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50018" to="TileMap/Midground/@StaticBody2D@50018" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50019" to="TileMap/Midground/@StaticBody2D@50019" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50020" to="TileMap/Midground/@StaticBody2D@50020" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50021" to="TileMap/Midground/@StaticBody2D@50021" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50022" to="TileMap/Midground/@StaticBody2D@50022" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50023" to="TileMap/Midground/@StaticBody2D@50023" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50024" to="TileMap/Midground/@StaticBody2D@50024" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50059" to="TileMap/Midground/@StaticBody2D@50059" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50060" to="TileMap/Midground/@StaticBody2D@50060" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50061" to="TileMap/Midground/@StaticBody2D@50061" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50062" to="TileMap/Midground/@StaticBody2D@50062" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50063" to="TileMap/Midground/@StaticBody2D@50063" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50064" to="TileMap/Midground/@StaticBody2D@50064" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50065" to="TileMap/Midground/@StaticBody2D@50065" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50066" to="TileMap/Midground/@StaticBody2D@50066" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50067" to="TileMap/Midground/@StaticBody2D@50067" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50068" to="TileMap/Midground/@StaticBody2D@50068" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50069" to="TileMap/Midground/@StaticBody2D@50069" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50070" to="TileMap/Midground/@StaticBody2D@50070" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50071" to="TileMap/Midground/@StaticBody2D@50071" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50072" to="TileMap/Midground/@StaticBody2D@50072" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50073" to="TileMap/Midground/@StaticBody2D@50073" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50074" to="TileMap/Midground/@StaticBody2D@50074" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50075" to="TileMap/Midground/@StaticBody2D@50075" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50076" to="TileMap/Midground/@StaticBody2D@50076" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50093" to="TileMap/Midground/@StaticBody2D@50093" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50094" to="TileMap/Midground/@StaticBody2D@50094" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50095" to="TileMap/Midground/@StaticBody2D@50095" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50096" to="TileMap/Midground/@StaticBody2D@50096" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50097" to="TileMap/Midground/@StaticBody2D@50097" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50098" to="TileMap/Midground/@StaticBody2D@50098" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50099" to="TileMap/Midground/@StaticBody2D@50099" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50100" to="TileMap/Midground/@StaticBody2D@50100" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50101" to="TileMap/Midground/@StaticBody2D@50101" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50156" to="TileMap/Midground/@StaticBody2D@50156" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50157" to="TileMap/Midground/@StaticBody2D@50157" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50158" to="TileMap/Midground/@StaticBody2D@50158" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50159" to="TileMap/Midground/@StaticBody2D@50159" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50160" to="TileMap/Midground/@StaticBody2D@50160" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50176" to="TileMap/Midground/@StaticBody2D@50176" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50177" to="TileMap/Midground/@StaticBody2D@50177" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50178" to="TileMap/Midground/@StaticBody2D@50178" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50179" to="TileMap/Midground/@StaticBody2D@50179" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50180" to="TileMap/Midground/@StaticBody2D@50180" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50181" to="TileMap/Midground/@StaticBody2D@50181" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50182" to="TileMap/Midground/@StaticBody2D@50182" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50183" to="TileMap/Midground/@StaticBody2D@50183" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50404" to="TileMap/Midground/@StaticBody2D@50404" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50408" to="TileMap/Midground/@StaticBody2D@50408" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50412" to="TileMap/Midground/@StaticBody2D@50412" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50416" to="TileMap/Midground/@StaticBody2D@50416" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50420" to="TileMap/Midground/@StaticBody2D@50420" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50425" to="TileMap/Midground/@StaticBody2D@50425" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50429" to="TileMap/Midground/@StaticBody2D@50429" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50433" to="TileMap/Midground/@StaticBody2D@50433" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50437" to="TileMap/Midground/@StaticBody2D@50437" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50441" to="TileMap/Midground/@StaticBody2D@50441" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50445" to="TileMap/Midground/@StaticBody2D@50445" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50449" to="TileMap/Midground/@StaticBody2D@50449" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50453" to="TileMap/Midground/@StaticBody2D@50453" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50458" to="TileMap/Midground/@StaticBody2D@50458" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50461" to="TileMap/Midground/@StaticBody2D@50461" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50465" to="TileMap/Midground/@StaticBody2D@50465" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50469" to="TileMap/Midground/@StaticBody2D@50469" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50473" to="TileMap/Midground/@StaticBody2D@50473" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50477" to="TileMap/Midground/@StaticBody2D@50477" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50481" to="TileMap/Midground/@StaticBody2D@50481" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50485" to="TileMap/Midground/@StaticBody2D@50485" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50489" to="TileMap/Midground/@StaticBody2D@50489" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50493" to="TileMap/Midground/@StaticBody2D@50493" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50497" to="TileMap/Midground/@StaticBody2D@50497" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50499" to="TileMap/Midground/@StaticBody2D@50499" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50500" to="TileMap/Midground/@StaticBody2D@50500" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50501" to="TileMap/Midground/@StaticBody2D@50501" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50502" to="TileMap/Midground/@StaticBody2D@50502" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50503" to="TileMap/Midground/@StaticBody2D@50503" method="_on_ready"]
-[connection signal="ready" from="TileMap/Midground/@StaticBody2D@50771" to="TileMap/Midground/@StaticBody2D@50771" method="_on_ready"]
+[node name="Label" type="Label" parent="."]
+offset_left = 1300.0
+offset_top = -171.0
+offset_right = 1500.0
+offset_bottom = -18.0
+text = "Widen the drop down sections by 1 tile. As it is, feels like player have no choice in when drop down. Detracts from satisfaction"
+autowrap_mode = 2
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 984.0
+offset_top = -35.0
+offset_right = 1184.0
+offset_bottom = 118.0
+text = "Why is there a platform? Simplify if not needed"
+autowrap_mode = 2
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 1832.0
+offset_top = -108.0
+offset_right = 2032.0
+offset_bottom = 45.0
+text = "Why this whole section? the player could not reach it "
+autowrap_mode = 2
