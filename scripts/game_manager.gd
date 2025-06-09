@@ -230,6 +230,7 @@ func _on_level_win(current_level: int) -> void:
 	_animated_sprite.play("idle")
 	$VictorySound.play()
 	_clear_collectibles()
+	_animated_sprite.position = Vector2(593.0, 427.0)
 
 # ---------------------------------------
 # RESET / CLEAR HELPERS

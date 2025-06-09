@@ -22,11 +22,11 @@ func _physics_process(delta: float) -> void:
 	if ray_cast_right.is_colliding():
 		direction = -1
 		animated_sprite.flip_h = true
-		$Killzone/Killbox.position.x = 3
-	if ray_cast_left.is_colliding():
+		$Killzone/Killbox.position.x = -3.0
+	elif ray_cast_left.is_colliding():
 		direction = 1
 		animated_sprite.flip_h = false
-		$Killzone/Killbox.position.x = -3
+		$Killzone/Killbox.position.x = 3.0
 	position.x += direction * SPEED * delta
 	if ray_cast_down.is_colliding():
 		vel_y = 0
