@@ -131,6 +131,6 @@ textToShow = "Green Slimes touch you and force u to shower and start over"
 position = Vector2(568, 8)
 textToShow = "Red slimes could be present... --DASH through their projectiles"
 
-[node name="Frontflip stop movement2" parent="Sign" instance=ExtResource("8_1uqwn")]
+[node name="Lava Mushroom Combo" parent="Sign" instance=ExtResource("8_1uqwn")]
 position = Vector2(552, -312)
 textToShow = "LAVAAA +Mushroom = ?"
