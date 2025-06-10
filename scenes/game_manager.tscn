@@ -414,7 +414,7 @@ stream = ExtResource("9_k4jhu")
 
 [node name="Pause_Menu" parent="PauseMenu" instance=ExtResource("10_frtjd")]
 
-[node name="WinRequirementsTextBox" type="CanvasLayer" parent="." groups=["DeadGroup", "LevelGroup"]]
+[node name="WinRequirementsTextBox" type="CanvasLayer" parent="." groups=["LevelGroup"]]
 layer = 0
 
 [node name="WinRequirementsTextBox" type="MarginContainer" parent="WinRequirementsTextBox"]

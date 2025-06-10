@@ -22,6 +22,19 @@ const GS := GAME_SCREEN_STATE
 # MEMBER VARIABLES
 # ---------------------------------------
 
+var save_enabled : bool = true
+
+var save_point := Vector2(0.0,0.0) :
+	set(position):
+		save_point = position
+		if position == Vector2(0.0,0.0):
+			_saved_collected_items.clear()
+			save_enabled = true
+		else:
+			_saved_collected_items = _collected_items.duplicate()
+		
+var _saved_collected_items : Array[COLLECTIBLE] = []
+
 # To‐collect vs. already‐collected sets (typed Arrays of enum)
 var _items_to_collect: Array[COLLECTIBLE] = []
 var _collected_items: Array[COLLECTIBLE] = []
@@ -98,6 +111,13 @@ func apply_game_state(state: GAME_SCREEN_STATE= GS.NA) -> void:
 			_show_group("LevelGroup")
 			if "level" in get_tree().current_scene:
 				level = get_tree().current_scene.level
+				# reset win/lose sprite location when reset level
+				_animated_sprite.position = Vector2(593.0, 427.0)
+				# reset player position
+				if save_point != null and save_point != Vector2(0.0,0.0):
+					player.set_camera_position_smoothing(false)
+					player.position = save_point
+					player.set_camera_position_smoothing(true)
 			else:
 				push_error("Current scene's 'level' property missing; defaulting to level = 1.")
 				level = 1
@@ -200,7 +220,11 @@ func on_player_death() -> void:
 	_play_death_animation()
 	await _animated_sprite.animation_finished
 	score = 0
-	_clear_collectibles()
+	_items_to_collect.clear()
+	_collected_items = _saved_collected_items
+	# if respawn at a save point, saving will be reenabled upon exiting the save point
+	if save_point != null and save_point != Vector2(0.0, 0.0):
+		save_enabled = false
 	apply_game_state(GS.LEVEL)
 
 func _play_death_animation() -> void:
@@ -227,18 +251,12 @@ func _on_level_win(current_level: int) -> void:
 	_animated_sprite.position += Vector2(-122, -150)
 	$WinLabel.text = "Level %d Won!" % current_level
 	unlocked_up_to_level = min(5, max(unlocked_up_to_level, current_level + 1))
+	save_progress()
 	_animated_sprite.play("idle")
 	$VictorySound.play()
-	_clear_collectibles()
-	_animated_sprite.position = Vector2(593.0, 427.0)
-
-# ---------------------------------------
-# RESET / CLEAR HELPERS
-# ---------------------------------------
-
-func _clear_collectibles() -> void:
 	_items_to_collect.clear()
 	_collected_items.clear()
+	_saved_collected_items.clear()
 
 # ---------------------------------------
 # TIMESCALE & LEVEL RELOAD (if needed)
@@ -251,6 +269,39 @@ func _handle_death_timescale() -> void:
 	get_tree().paused = false
 	get_tree().reload_current_scene()
 
+#var new_scene_resource
+#
+#func _handle_death_timescale() -> void:
+	#Engine.time_scale = GameConstants.DEATH_ENGINE_SLOWDOWN
+	#await get_tree().create_timer(DEATH_TIME).timeout
+	#Engine.time_scale = 1
+	#get_tree().paused = false
+	## Start loading the scene in the background
+	#var root := get_tree().root
+	#var file_path := get_tree().current_scene.get_scene_file_path()
+	#print("file path: " + file_path)
+	#ResourceLoader.load_threaded_request(file_path)
+	#await _wait_for_scene_to_load(file_path)
+#
+	## Replace current scene manually
+	#var new_scene = new_scene_resource.instantiate()
+	##root.call_deferred("remove_child", get_tree().current_scene)
+	##get_tree().call_deferred("set_current_scene", new_scene)
+	##root.call_deferred("add_child", new_scene)
+##
+	### Apply game state after scene is added
+	##await new_scene.ready
+	#await get_tree().change_scene_to_file(file_path)
+	#print( "current scene: " + str(get_tree().current_scene))
+	#apply_game_state(GS.LEVEL)
+	#
+#func _wait_for_scene_to_load(file_path : String) -> void:
+	#while true:
+		#var status = ResourceLoader.load_threaded_get_status(file_path)
+		#if status == ResourceLoader.THREAD_LOAD_LOADED:
+			#new_scene_resource  = ResourceLoader.load_threaded_get(file_path)
+			#break
+		#await get_tree().process_frame
 
 # ---------------------------------------
 # SAVES

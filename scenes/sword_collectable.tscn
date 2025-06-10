@@ -8,6 +8,7 @@ size = Vector2(8, 16)
 
 [node name="sword_collectable" type="Area2D"]
 script = ExtResource("1_ohye5")
+collectible_type = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ohye5")

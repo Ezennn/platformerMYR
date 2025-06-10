@@ -251,6 +251,9 @@ func handle_gravity_and_animation(delta: float) -> void:
 		# upper clamped using jump velocity to deal with wall jumps
 		velocity.y = clamp(velocity.y, JUMP_VELOCITY, MAX_FALL_SPEED_WHILE_ON_WALL)
 
+func set_camera_position_smoothing(smoothening_value : bool) -> void:
+	$Camera2D.position_smoothing_enabled = smoothening_value
+
 func death_disable() -> void:
 	set_collision_layer_value(4, false)
 

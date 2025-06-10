@@ -8,9 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://ca3toq7ppqgoh" path="res://scenes/level_choice_button.tscn" id="6_r77uv"]
 [ext_resource type="PackedScene" uid="uid://bofabqvdodi8y" path="res://scenes/level 1.tscn" id="7_htctk"]
 [ext_resource type="PackedScene" uid="uid://vniuwukl7bfc" path="res://scenes/level 2.tscn" id="8_s6tf7"]
-[ext_resource type="PackedScene" uid="uid://lji6utb34y2y" path="res://scenes/level 3.tscn" id="9_u4mbh"]
-[ext_resource type="PackedScene" uid="uid://cchxt1752egyk" path="res://scenes/level 4.tscn" id="10_rovvv"]
-[ext_resource type="PackedScene" uid="uid://biuqxn0nveof5" path="res://scenes/level 5.tscn" id="11_0wyvj"]
+[ext_resource type="PackedScene" uid="uid://c2vvpf6nt2h71" path="res://scenes/level 3.tscn" id="9_u4mbh"]
+[ext_resource type="PackedScene" uid="uid://csocvidqyetob" path="res://scenes/level 4.tscn" id="10_rovvv"]
+[ext_resource type="PackedScene" uid="uid://b7j8wpexhkcyh" path="res://scenes/level 5.tscn" id="11_0wyvj"]
 
 [sub_resource type="Theme" id="Theme_r77uv"]
 default_font = ExtResource("3_chg43")
