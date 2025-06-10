@@ -13,4 +13,5 @@ func _ready() -> void:
 
 
 func _on_pressed() -> void:
+	GameManager.save_point = Vector2(0.0, 0.0)
 	get_tree().change_scene_to_packed(level_scene)

@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=15 format=3 uid="uid://caj3ura0jbt4r"]
+[gd_resource type="TileSet" load_steps=16 format=3 uid="uid://caj3ura0jbt4r"]
 
 [ext_resource type="Texture2D" uid="uid://busk4wfy7i7nl" path="res://assets/sprites/world_tileset.png" id="1_m2xcx"]
 [ext_resource type="PackedScene" uid="uid://ut00hhlq4hs6" path="res://scenes/lava.tscn" id="2_yqprb"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://twhc6gt41ynj" path="res://scenes/shield_collectable.tscn" id="3_wkeht"]
 [ext_resource type="PackedScene" uid="uid://bbcmm6s3mc7d0" path="res://scenes/crown.tscn" id="4_8kwi3"]
 [ext_resource type="PackedScene" uid="uid://b502rh18d774q" path="res://scenes/sword_collectable.tscn" id="4_m0uq4"]
+[ext_resource type="PackedScene" uid="uid://cl88x6msmnsk4" path="res://scenes/save_point.tscn" id="5_6uuae"]
 [ext_resource type="PackedScene" uid="uid://bcl07drly7tcu" path="res://scenes/coin.tscn" id="5_drhe8"]
 [ext_resource type="PackedScene" uid="uid://ljtvmhn8b01e" path="res://scenes/green_slime.tscn" id="6_36v6k"]
 [ext_resource type="PackedScene" uid="uid://bffkvikjsae43" path="res://scenes/ladder.tscn" id="7_5bx5l"]
@@ -189,6 +190,7 @@ scenes/8/scene = ExtResource("9_th5uc")
 scenes/9/scene = ExtResource("10_b8l50")
 scenes/10/scene = ExtResource("3_wkeht")
 scenes/11/scene = ExtResource("4_m0uq4")
+scenes/12/scene = ExtResource("5_6uuae")
 
 [resource]
 physics_layer_0/collision_layer = 1

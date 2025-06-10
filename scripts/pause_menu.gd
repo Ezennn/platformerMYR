@@ -41,6 +41,8 @@ func _on_resume_pressed() -> void:
 
 func _on_restart_pressed() -> void:
 	get_tree().paused = false
+	# reset save point 
+	GameManager.save_point = Vector2(0.0,0.0)
 	Engine.time_scale = 1
 	resume()
 	get_tree().reload_current_scene()

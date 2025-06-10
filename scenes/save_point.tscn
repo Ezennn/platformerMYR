@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://cl88x6msmnsk4"]
+
+[ext_resource type="Texture2D" uid="uid://cm83x12chkom5" path="res://assets/sprites/save point.png" id="1_n8qrg"]
+[ext_resource type="Script" uid="uid://dwwojwowmmum6" path="res://scripts/save_point.gd" id="1_xvfwu"]
+[ext_resource type="FontFile" uid="uid://cbt5xvtsjjscv" path="res://assets/fonts/PixelOperator8.ttf" id="3_wiums"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xvfwu"]
+size = Vector2(16, 16)
+
+[node name="Save Point" type="Area2D"]
+collision_mask = 8
+script = ExtResource("1_xvfwu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_xvfwu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("1_n8qrg")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -80.0
+offset_top = -64.0
+offset_right = 80.0
+offset_bottom = -16.0
+grow_horizontal = 2
+color = Color(1, 1, 1, 0.27451)
+
+[node name="Label" type="Label" parent="ColorRect"]
+layout_mode = 0
+offset_right = 160.0
+offset_bottom = 48.0
+theme_override_fonts/font = ExtResource("3_wiums")
+text = "Collectibles Saved!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
