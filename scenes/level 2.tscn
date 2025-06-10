@@ -335,7 +335,7 @@ shape = SubResource("WorldBoundaryShape2D_p57ef")
 
 [node name="Double Jump Dash" parent="Signs" instance=ExtResource("14_dnpcw")]
 position = Vector2(1192, 4.54747e-13)
-textToShow = "Legends speak of the knight who could double jump dash"
+textToShow = "Double Jump Dash -- the athletics you could never pull in real life"
 
 [node name="Chamber of Ladders" parent="Signs" instance=ExtResource("14_dnpcw")]
 position = Vector2(3176, -248)

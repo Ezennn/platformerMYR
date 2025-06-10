@@ -349,6 +349,10 @@ textToShow = "A dashing knight is too handsome to burn"
 position = Vector2(1352, 72)
 textToShow = "Remember: There are fake walls"
 
-[node name="Fake Barrier2" parent="Signs" instance=ExtResource("15_ihmap")]
+[node name="Red Slime Rhythm Tip" parent="Signs" instance=ExtResource("15_ihmap")]
 position = Vector2(3096, -360)
 textToShow = "The slimes have a rhythm to them "
+
+[node name="Horse Lore" parent="Signs" instance=ExtResource("15_ihmap")]
+position = Vector2(1224, -7.99999)
+textToShow = "NEIGHHH -- Quit horsing around our horsy valuables"

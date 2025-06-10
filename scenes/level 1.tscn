@@ -101,7 +101,7 @@ shape = SubResource("WorldBoundaryShape2D_p57ef")
 
 [node name="CollectItems2Win" parent="Sign" instance=ExtResource("8_1uqwn")]
 position = Vector2(56, 24)
-textToShow = "HEHEHE I've hidden your royal tools around the map. You'll NEVER find them"
+textToShow = "\"Single horses in Your Area?\" Nah bruh ur sent here to touch grass -- The Horse Gods"
 
 [node name="Coin Valley" parent="Sign" instance=ExtResource("8_1uqwn")]
 position = Vector2(-232, 88)
