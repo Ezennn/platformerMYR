@@ -335,6 +335,16 @@ shape = SubResource("WorldBoundaryShape2D_p57ef")
 
 [node name="Signs" type="Node" parent="."]
 
-[node name="Sign" parent="Signs" instance=ExtResource("15_lkx0t")]
+[node name="Bottom Path Dangerous Warning" parent="Signs" instance=ExtResource("15_lkx0t")]
 position = Vector2(2600, -360)
 textToShow = "More money on the bottom left side... Anyone? "
+
+[node name="MarginContainer" parent="Signs/Bottom Path Dangerous Warning" index="2"]
+offset_left = -240.0
+offset_right = 240.0
+
+[node name="Horse God Lore" parent="Signs" instance=ExtResource("15_lkx0t")]
+position = Vector2(1240, -8.00001)
+textToShow = "Please don't siege our castle -- Horse Gods"
+
+[editable path="Signs/Bottom Path Dangerous Warning"]
