@@ -79,9 +79,6 @@ func _process(_delta: float) -> void:
 	if current_scene != null and current_scene != _previous_scene:
 		_previous_scene = current_scene
 		_on_scene_changed(current_scene)
-	
-	print("collected items " + str(_collected_items))
-	print("saved items " + str(_saved_collected_items))
 
 # ---------------------------------------
 # SCENE CHANGE HANDLING
@@ -118,7 +115,9 @@ func apply_game_state(state: GAME_SCREEN_STATE= GS.NA) -> void:
 				_animated_sprite.position = Vector2(593.0, 427.0)
 				# reset player position
 				if save_point != null and save_point != Vector2(0.0,0.0):
+					player.set_camera_position_smoothing(false)
 					player.position = save_point
+					player.set_camera_position_smoothing(true)
 			else:
 				push_error("Current scene's 'level' property missing; defaulting to level = 1.")
 				level = 1
@@ -252,6 +251,7 @@ func _on_level_win(current_level: int) -> void:
 	_animated_sprite.position += Vector2(-122, -150)
 	$WinLabel.text = "Level %d Won!" % current_level
 	unlocked_up_to_level = min(5, max(unlocked_up_to_level, current_level + 1))
+	save_progress()
 	_animated_sprite.play("idle")
 	$VictorySound.play()
 	_items_to_collect.clear()
