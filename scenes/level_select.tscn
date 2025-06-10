@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cun3lygolenju"]
+[gd_scene load_steps=18 format=3 uid="uid://cun3lygolenju"]
 
 [ext_resource type="Texture2D" uid="uid://cos7ah2l5cyxe" path="res://assets/screens/background_pixelart.jpg" id="1_2epne"]
 [ext_resource type="Script" uid="uid://ducl7fs0l0df" path="res://scripts/level_select.gd" id="1_r77uv"]
@@ -7,10 +7,15 @@
 [ext_resource type="PackedScene" uid="uid://clr6kwflr7th0" path="res://scenes/options_button.tscn" id="5_4nqmc"]
 [ext_resource type="PackedScene" uid="uid://ca3toq7ppqgoh" path="res://scenes/level_choice_button.tscn" id="6_r77uv"]
 [ext_resource type="PackedScene" uid="uid://bofabqvdodi8y" path="res://scenes/level 1.tscn" id="7_htctk"]
+[ext_resource type="Texture2D" uid="uid://blubcpc0rmlgc" path="res://assets/screens/level 1 button.png" id="8_m4qq5"]
 [ext_resource type="PackedScene" uid="uid://vniuwukl7bfc" path="res://scenes/level 2.tscn" id="8_s6tf7"]
 [ext_resource type="PackedScene" uid="uid://c2vvpf6nt2h71" path="res://scenes/level 3.tscn" id="9_u4mbh"]
+[ext_resource type="Texture2D" uid="uid://krhbnd4tsxm3" path="res://assets/screens/level 2 button.png" id="10_n1411"]
 [ext_resource type="PackedScene" uid="uid://csocvidqyetob" path="res://scenes/level 4.tscn" id="10_rovvv"]
 [ext_resource type="PackedScene" uid="uid://b7j8wpexhkcyh" path="res://scenes/level 5.tscn" id="11_0wyvj"]
+[ext_resource type="Texture2D" uid="uid://nolspofe3fgv" path="res://assets/screens/level 3 button.png" id="12_vxici"]
+[ext_resource type="Texture2D" uid="uid://b5t7guvre4yt7" path="res://assets/screens/level 4 button.png" id="14_thf6c"]
+[ext_resource type="Texture2D" uid="uid://cewm6t7ead15k" path="res://assets/screens/level 5 button.png" id="16_f86jd"]
 
 [sub_resource type="Theme" id="Theme_r77uv"]
 default_font = ExtResource("3_chg43")
@@ -63,6 +68,9 @@ offset_right = 1526.0
 offset_bottom = 1384.0
 level_scene = ExtResource("7_htctk")
 
+[node name="TextureRect" parent="Level1" index="1"]
+texture = ExtResource("8_m4qq5")
+
 [node name="Level2" parent="." instance=ExtResource("6_r77uv")]
 layout_mode = 0
 offset_left = 478.0
@@ -74,6 +82,9 @@ level_scene = ExtResource("8_s6tf7")
 
 [node name="Label" parent="Level2" index="0"]
 text = "Level 2"
+
+[node name="TextureRect" parent="Level2" index="1"]
+texture = ExtResource("10_n1411")
 
 [node name="Level3" parent="." instance=ExtResource("6_r77uv")]
 layout_mode = 0
@@ -87,6 +98,9 @@ level_scene = ExtResource("9_u4mbh")
 [node name="Label" parent="Level3" index="0"]
 text = "Level 3"
 
+[node name="TextureRect" parent="Level3" index="1"]
+texture = ExtResource("12_vxici")
+
 [node name="Level4" parent="." instance=ExtResource("6_r77uv")]
 layout_mode = 0
 offset_left = 275.0
@@ -99,6 +113,9 @@ level_scene = ExtResource("10_rovvv")
 [node name="Label" parent="Level4" index="0"]
 text = "Level 4"
 
+[node name="TextureRect" parent="Level4" index="1"]
+texture = ExtResource("14_thf6c")
+
 [node name="Level5" parent="." instance=ExtResource("6_r77uv")]
 layout_mode = 0
 offset_left = 693.0
@@ -110,6 +127,9 @@ level_scene = ExtResource("11_0wyvj")
 
 [node name="Label" parent="Level5" index="0"]
 text = "Level 5"
+
+[node name="TextureRect" parent="Level5" index="1"]
+texture = ExtResource("16_f86jd")
 
 [connection signal="pressed" from="Level1" to="." method="_on_level_1_pressed"]
 [connection signal="pressed" from="Level2" to="." method="_on_level_2_pressed"]
