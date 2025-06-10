@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="First Godot Platformer"
+config/name="Single Horses In Your Area"
 run/main_scene="uid://b2wboy6uv8wjp"
 config/features=PackedStringArray("4.4", "Forward Plus")
 
