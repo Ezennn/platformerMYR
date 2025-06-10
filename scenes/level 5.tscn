@@ -307,3 +307,18 @@ shape = SubResource("WorldBoundaryShape2D_p57ef")
 [node name="Collectible Locations" parent="Signs" instance=ExtResource("17_pc85o")]
 position = Vector2(3304, -568)
 textToShow = "The shield through the path above, the sword below, and the crown at the very end of it all"
+
+[node name="MarginContainer" parent="Signs/Collectible Locations" index="2"]
+offset_left = -240.0
+offset_right = 240.0
+
+[node name="Horse Lore" parent="Signs" instance=ExtResource("17_pc85o")]
+position = Vector2(3368, -568)
+textToShow = "NEIGHH uwu -- I've left the three pieces of the hyperlink around the carpark basement. Collect them all to see single horses in your area -- Horse Princess "
+
+[node name="MarginContainer" parent="Signs/Horse Lore" index="2"]
+offset_left = -240.0
+offset_right = 240.0
+
+[editable path="Signs/Collectible Locations"]
+[editable path="Signs/Horse Lore"]
